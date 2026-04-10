@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Jumping Genes to Autoimmunity: The cGAS-STING Pathway as a Mechanistic Bridge</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --surface: #ffffff;
+      --surface-soft: #f3f5fa;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --border: #d7dfeb;
+      --navy: #3147a5;
+      --navy-soft: #eaf0ff;
+      --rose: #f8dce7;
+      --rose-border: #e8a8bf;
+      --green: #dff3e8;
+      --green-border: #8bc8a4;
+      --gold: #fff1cc;
+      --gold-border: #e7c870;
+      --lavender: #ece8ff;
+      --lavender-border: #b9afea;
+      --peach: #ffe8d8;
+      --peach-border: #e6b792;
+      --shadow: 0 16px 40px rgba(31, 41, 55, 0.08);
+      --maxw: 1380px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 18px/1.78 Georgia, Cambria, 'Times New Roman', serif;
+    }
+    a { color: #304db8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px 60px; }
+    .topbar {
+      background: linear-gradient(135deg, #3249a5 0%, #26346f 100%);
+      color: white;
+      border-radius: 22px;
+      padding: 28px 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+    .topbar h1 {
+      margin: 0 0 8px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: clamp(26px, 2.35vw, 36px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      max-width: 980px;
+    }
+    .topbar p {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 15px;
+      opacity: 0.92;
+    }
+    .layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 22px; align-items: start; }
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .sidebar h2 { margin: 0 0 14px; font-size: 16px; color: #223061; }
+    .sidebar ul { list-style: none; margin: 0; padding: 0; }
+    .sidebar li + li { margin-top: 8px; }
+    .sidebar a { display: block; padding: 8px 10px; border-radius: 10px; color: #2f426d; font-size: 14px; }
+    .sidebar a:hover { background: var(--navy-soft); text-decoration: none; }
+    .content { min-width: 0; }
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 28px 32px;
+      margin-bottom: 22px;
+      overflow: hidden;
+    }
+    .section-title {
+      margin: 0 0 18px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: clamp(28px, 2.2vw, 34px);
+      line-height: 1.2;
+      color: #18253e;
+      border-bottom: 2px solid #dfe6f7;
+      padding-bottom: 10px;
+    }
+    .subsection-title {
+      margin: 28px 0 12px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.3;
+      color: #22345c;
+    }
+    .minor-title {
+      margin: 24px 0 10px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 18px;
+      color: #30405d;
+    }
+    p { margin: 12px 0; }
+    .hero-card {
+      background: linear-gradient(180deg, #f7f9ff, #eef3ff);
+      border: 1px solid #cfd9f5;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px 18px;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
+    .meta-value { font-size: 14px; color: #1e2b48; font-weight: 600; }
+    .cite a { color: #304db8; }
+    .xref { color: #304db8; font-weight: 600; }
+    .figure-shell {
+      margin: 28px 0;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fcfdff, #f4f7fb);
+      border: 1px solid #d8e0ee;
+    }
+    .figure-inner { overflow-x: auto; }
+    .figure-image { display: block; width: 100%; height: auto; border-radius: 14px; background: white; }
+    figcaption {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #4a5565;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+    .diagram { font-family: 'Segoe UI', system-ui, sans-serif; }
+    .split-diagram { display: grid; grid-template-columns: minmax(0, 1fr) 60px minmax(0, 1fr); gap: 14px; align-items: stretch; }
+    .diagram-panel { padding: 18px; border-radius: 16px; border: 1px solid var(--border); }
+    .panel-soft { background: var(--surface-soft); }
+    .panel-blue { background: var(--navy-soft); border-color: #c7d7fb; }
+    .panel-rose { background: #fff2f6; border-color: var(--rose-border); }
+    .panel-green { background: #edf9f1; border-color: var(--green-border); }
+    .panel-lavender { background: #f3f1ff; border-color: var(--lavender-border); }
+    .panel-peach { background: #fff2e8; border-color: var(--peach-border); }
+    .panel-gold { background: #fff9e8; border-color: var(--gold-border); }
+    .diagram-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #24314c; }
+    .diagram-panel ul { margin: 0 0 14px 20px; padding: 0; }
+    .diagram-panel li { margin: 7px 0; }
+    .diagram-arrow { display: flex; align-items: center; justify-content: center; font-size: 34px; color: #7d8daa; font-family: 'Segoe UI', system-ui, sans-serif; }
+    .diagram-result, .diagram-chain, .return-loop, .therapy-note {
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 15px;
+      line-height: 1.55;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(100, 116, 139, 0.25);
+    }
+    .pathway-diagram { display: grid; gap: 12px; }
+    .pathway-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; align-items: stretch; }
+    .path-node, .therapy-node {
+      padding: 14px 12px;
+      border-radius: 14px;
+      text-align: center;
+      font-weight: 700;
+      color: #26334f;
+      border: 1px solid rgba(80, 93, 118, 0.18);
+      background: white;
+      min-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .path-node span, .therapy-node span { font-size: 13px; font-weight: 500; color: #5d6880; line-height: 1.4; }
+    .path-arrow { display: flex; align-items: center; justify-content: center; font-size: 28px; color: #8a98b5; font-family: 'Segoe UI', system-ui, sans-serif; }
+    .therapy-diagram { display: grid; gap: 14px; }
+    .therapy-track { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+    .therapy-chip { padding: 8px 12px; border-radius: 999px; font: 700 13px 'Segoe UI', system-ui, sans-serif; border: 1px solid transparent; }
+    .chip-green { background: #e6f8ec; border-color: #9ad0ac; color: #1b6840; }
+    .chip-pink { background: #fdeaf1; border-color: #e8b0c5; color: #9a365c; }
+    .chip-blue { background: #e8efff; border-color: #adc4ff; color: #2d4bb3; }
+    .chip-gold { background: #fff6db; border-color: #ebd18a; color: #8c6710; }
+    .therapy-row { display: grid; grid-template-columns: repeat(9, auto); gap: 10px; align-items: center; justify-content: center; }
+    .timeline { display: grid; grid-template-columns: repeat(7, minmax(160px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 2px; }
+    .timepoint { background: linear-gradient(180deg, #f8faff, #eef3fb); border: 1px solid #d9e1ee; border-radius: 16px; padding: 14px; min-height: 180px; }
+    .year { font: 800 15px 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; color: #3147a5; text-transform: uppercase; margin-bottom: 8px; }
+    .milestone { font: 600 14px/1.5 'Segoe UI', system-ui, sans-serif; color: #2d3b58; }
+    .table-wrap { overflow-x: auto; }
+    .data-table { width: 100%; border-collapse: collapse; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 15px; min-width: 820px; }
+    .data-table th { background: #3047a5; color: white; text-align: left; padding: 12px 14px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .data-table td { padding: 13px 14px; border-bottom: 1px solid #e1e7f0; vertical-align: top; }
+    .data-table tbody tr:nth-child(even) td { background: #fafbfe; }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .badge-ok { background: #e6f8ec; color: #1d6a42; }
+    .badge-warn { background: #fff4d6; color: #8c6a12; }
+    .badge-soft { background: #f6ecff; color: #6b3da7; }
+    .badge-muted { background: #eef2f8; color: #5e6b80; }
+    .reference-list { margin: 18px 0 0 20px; padding: 0; font-size: 14px; line-height: 1.7; }
+    .reference-list li { margin-bottom: 10px; padding-left: 6px; }
+    .appendix-note { background: #fff8e9; border: 1px solid #f0d790; border-radius: 14px; padding: 16px; font-family: 'Segoe UI', system-ui, sans-serif; color: #5f4f1a; }
+    .appendix-block { margin-top: 10px; }
+    .appendix-group { margin: 18px 0 22px; padding: 16px 18px; border: 1px solid #dbe2ee; border-radius: 16px; background: #fbfcfe; }
+    .appendix-group-title { font: 700 17px 'Segoe UI', system-ui, sans-serif; color: #22345c; margin-bottom: 10px; }
+    .appendix-links { margin: 0; padding-left: 20px; }
+    .appendix-links li { margin: 8px 0; word-break: break-word; }
+    .list-block ul { margin-top: 10px; margin-bottom: 10px; }
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .split-diagram { grid-template-columns: 1fr; }
+      .diagram-arrow { transform: rotate(90deg); min-height: 32px; }
+      .pathway-row { grid-template-columns: 1fr; }
+      .path-arrow { transform: rotate(90deg); min-height: 22px; }
+      .therapy-row { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      body { font-size: 17px; }
+      .section { padding: 22px 18px; }
+      .topbar { padding: 22px 20px; }
+      .meta-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <h1>From Jumping Genes to Autoimmunity: The cGAS-STING Pathway as a Mechanistic Bridge</h1>
+      <p>MSBM10020 — Medical Sciences Academic Portfolio · Updated single-file portfolio with integrated figures, revised references, and cleaner diagram styling.</p>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>Navigate</h2>
+        <ul><li><a href="#overview">Overview</a></li><li><a href="#s1">1. cGAS-STING Pathway</a></li><li><a href="#s2">2. Transposable Elements</a></li><li><a href="#s3">3. COVID-19 Connection</a></li><li><a href="#s4">4. Immunotherapy</a></li><li><a href="#s5">5. Neuroinflammation</a></li><li><a href="#s6">6. Reflection & Future Horizons</a></li><li><a href="#references">References</a></li><li><a href="#appendix">Appendix</a></li></ul>
+      </aside>
+
+      <main class="content">
+        <section id="overview" class="section">
+        <div class="hero-card">
+          <div class="meta-grid">
+            <div><div class="meta-label">Course</div><div class="meta-value">MSBM10020 — Medical Sciences Academic Portfolio</div></div>
+            <div><div class="meta-label">Format</div><div class="meta-value">Single-file academic portfolio website</div></div>
+            <div><div class="meta-label">Exam number</div><div class="meta-value">B211371</div></div>
+            <div><div class="meta-label">Appendix</div><div class="meta-value">To be attached separately</div></div>
+          </div>
+        </div>
+        <h3 class="subsection-title">Focus</h3><p>This Wikiblog explores how transposable elements, mobile DNA sequences making up nearly half the human genome <b><sup class="cite">[<a href="#ref-1">1</a>, <a href="#ref-2">2</a>]</sup></b>, can trigger the cGAS-STING innate immune pathway, driving autoimmune disease, post-COVID-19 complications, and neuroinflammation <b><sup class="cite">[<a href="#ref-3">3</a>]</sup></b>. The sequential sections from molecular mechanism to therapeutic innovation incorporate developments from 2024 onwards that were not covered in my Year 3 courses.</p><h3 class="subsection-title">Rationale & Structure</h3><p>During Year 3, three courses were fundamental to my deeper understanding of the human genome and the immune system. Firstly, Clinical Immunology and Haematology 3A explored innate and adaptive immunity, including the acute inflammatory response, mechanisms of autoimmune disease, and the therapeutic landscape for SARS-CoV-2, for which I produced a Wikiblog on COVID-19 immunotherapies as part of a group in-course assessment. Secondly, Medical Microbiology analysed how viruses and other pathogens exploit and evade host defences and examined different therapeutic approaches. Finally, Molecular Genetics introduced me to transposable elements (TEs), the “jumping genes” that constitute nearly half our genome (Lectures 15-16 in Appendix). At the time, I did not have additional information to link TEs to immunity.</p><p>This changed after Year 3 when I learned about the cGAS-STING signalling pathway through independent reading. cGAS-STING is an innate immune sensor that detects cytoplasmic DNA and triggers the production of type I interferons, IFN-α and IFN-β <b><sup class="cite">[<a href="#ref-4">4</a>, <a href="#ref-5">5</a>]</sup></b>. I was intrigued by its dual role, serving both as a frontline antiviral defence and as a driver of autoimmune pathology when chronically activated by self-derived DNA <b><sup class="cite">[<a href="#ref-6">6</a>]</sup></b>. Critically, one major source of self-derived DNA is the TEs I encountered in Molecular Genetics, providing a mechanistic bridge between my separate courses.</p><p>This association is now supported by a growing body of evidence, including genetic studies of interferonopathies like Aicardi-Goutières syndrome <b><sup class="cite">[<a href="#ref-7">7</a>, <a href="#ref-8">8</a>]</sup></b>, pharmacological studies showing HIV reverse transcriptase inhibitors reduce LINE-1-driven interferon signalling in lupus <b><sup class="cite">[<a href="#ref-9">9</a>]</sup></b>, and the landmark finding that LINE-1 reactivation drives type I interferon production in senescent cells <b><sup class="cite">[<a href="#ref-10">10</a>]</sup></b>. These findings establish that TEs are not merely ‘genomic parasites’ but also active participants in innate immune regulation.</p><h3 class="subsection-title">Format Justification and Referencing Style</h3><p>Creating a Wikiblog seemed more appealing to me because it reflects the way scientific knowledge is increasingly communicated today. The hyperlinked sections enable non-linear navigation across related topics, making it easier to draw connections among TEs, innate immunity, and clinical therapeutics than in a conventional linear essay. The Vancouver numbered citation style was favoured over the Harvard author-date format because of the high reference density, which would occupy a disproportionate portion of the word count with repeated author-date parenthetical citations, thereby reducing space available for scientific discussion and critical analysis.</p></section>
+        <section id="s1" class="section"><h2 class="section-title">1. The cGAS-STING Pathway - A Key Cytosolic DNA Sensor</h2><h3 class="subsection-title">1.1 Discovery and Significance</h3><p>The innate immune system’s ability to detect cytoplasmic/cytosolic DNA (cytoDNA) has been acknowledged since the early 2000s, but the identity of the actual sensor remained elusive for nearly a decade. The identification of STING (Stimulator of Interferon Genes) as an endoplasmic reticulum (ER)-resident adaptor protein marked a critical advancement, demonstrating its role in linking cytoDNA detection to type I interferon (IFN) production <b><sup class="cite">[<a href="#ref-11">11</a>]</sup></b>. However, STING itself does not bind DNA directly, but serves as a signal transduction adaptor rather than a pattern recognition receptor <b><sup class="cite">[<a href="#ref-12">12</a>]</sup></b>.</p><p>The breakthrough arrived in 2013 with two successive publications in <i>Science</i>. Sun et al. employed biochemical fractionation and mass spectrometry on the murine fibrosarcoma cell line L929 to identify cyclic GMP-AMP synthase (cGAS), a nucleotidyltransferase that directly binds cytoplasmic double-stranded DNA and catalyses synthesis of the second messenger 2’3’-cyclic GMP-AMP (cGAMP) <b><sup class="cite">[<a href="#ref-4">4</a>]</sup></b>. In the companion publication, Wu J et al. independently characterised cGAMP as the endogenous dinucleotide that activates STING, thereby establishing the complete sensor-adaptor-effector axis <b><sup class="cite">[<a href="#ref-13">13</a>]</sup></b>. Gao et al. further demonstrated that cGAS serves as an innate immune sensor of HIV and other retroviruses, directly connecting the pathway to retroviral biology, extending to the genome’s own retroviral-like elements <b><sup class="cite">[<a href="#ref-14">14</a>]</sup></b>.</p><p>Remarkably, this pathway appears to be ancient. Kranzusch PJ et al. identified functional cGAS and STING homologues in the sea anemone <i>Nematostella vectensis</i>, an organism that diverged from humans over 500 million years ago <b><sup class="cite">[<a href="#ref-15">15</a>]</sup></b>. The anemone cGAS produces 3’3’-cGAMP rather than the mammalian 2’3’-cGAMP, indicating that while the core detection mechanism is deeply conserved across metazoa, the signalling specificity has continued to evolve <b><sup class="cite">[<a href="#ref-15">15</a>]</sup></b>. This deep evolutionary conservation underscores the fundamental importance of cytosolic DNA sensing in host defence <b><sup class="cite">[<a href="#ref-16">16</a>, <a href="#ref-17">17</a>]</sup></b>.</p><h3 class="subsection-title">1.2 Mechanism of Action</h3><p>According to comprehensive studies, the cGAS-STING signalling cascade involves five mechanistically distinct steps <b><sup class="cite">[<a href="#ref-3">3</a>, <a href="#ref-18">18</a>]</sup></b>:</p><h4 class="minor-title"><b>Step 1 - DNA Detection</b></h4><p>cGAS binds cytosolic dsDNA in a sequence-independent manner, recognising the sugar-phosphate backbone rather than specific nucleotide sequences <b><sup class="cite">[<a href="#ref-4">4</a>]</sup></b>. This means cGAS detects any dsDNA in the cytoplasm, regardless of its origin, a feature that is simultaneously its greatest strength as a broad-spectrum pathogen sensor and its principal vulnerability in autoimmune disease. Structural studies have revealed that cGAS dimers multimerise on DNA and form liquid-liquid phase-separated biomolecular condensates, enabling switch-like activation kinetics and selectivity for long, accessible DNA over short fragments or nucleosome-wrapped chromatin <b><sup class="cite">[<a href="#ref-19">19</a>]</sup></b>. This phase separation concentrates the enzyme and reactants to enhance STING-dependent interferon responses while maintaining a threshold against spurious activation by small amounts of self-DNA <b><sup class="cite">[<a href="#ref-20">20</a>]</sup></b>.</p><h4 class="minor-title"><b>Step 2 - Second-messenger Synthesis</b></h4><p>Upon DNA binding, cGAS undergoes a conformational change that activates its nucleotidyltransferase domain, catalysing the synthesis of 2’3’-cyclic GMP-AMP (cGAMP) from ATP and GTP <b><sup class="cite">[<a href="#ref-3">3</a>, <a href="#ref-21">21</a>]</sup></b>. cGAMP functions as a second messenger that binds to and activates STING and contains a distinct combination of 2’-5’ and 3’-5’ phosphodiester bonds, structurally differentiating it from bacterial cyclic dinucleotides (CDNs), which contain only 3’-5’ linkages <b><sup class="cite">[<a href="#ref-3">3</a>]</sup></b>. This distinction is functionally significant since 2’3’-cGAMP binds mammalian STING with much higher affinity than bacterial CDNs, suggesting co-evolution between cGAS and STING <b><sup class="cite">[<a href="#ref-3">3</a>]</sup></b>.</p><h4 class="minor-title"><b>Step 3 - STING Activation and Trafficking</b></h4><p>The cGAMP binds to the STING homodimer on the ER, inducing dramatic conformational changes. Cryo-electron microscopy structures revealed a ~180° rotation of the STING ligand-binding domain, which promotes oligomerisation <b><sup class="cite">[<a href="#ref-22">22</a>]</sup></b>. The oligomerised STING then translocates from the ER to the ER-Golgi intermediate compartment (ERGIC) and then to the Golgi apparatus via COP-II vesicles <b><sup class="cite">[<a href="#ref-23">23</a>]</sup></b>. At the trans-Golgi network, palmitoylation at cysteine residues C88 and C91, mediated by ZDHHC-family palmitoyltransferases, is necessary for STING clustering in lipid rafts and full signalling competence <b><sup class="cite">[<a href="#ref-13">13</a>, <a href="#ref-24">24</a>]</sup></b>. Notably, it was demonstrated that STING-induced autophagy at the ERGIC represents its most evolutionarily ancient function, predating the interferon signalling that dominates in mammals <b><sup class="cite">[<a href="#ref-23">23</a>]</sup></b>.</p><h4 class="minor-title"><b>Step 4 - Downstream Signalling</b></h4><p>Activated STING recruits TANK-binding kinase-1 (TBK1) through a conserved PLPLRT/SD motif, triggering two parallel signalling cascades <b><sup class="cite">[<a href="#ref-25">25</a>]</sup></b>. First, TBK1 phosphorylates Interferon Regulatory Factor-3 (IRF3), a transcription factor which dimerises and translocates to the nucleus to initiate transcription of type I interferons (IFN-α, IFN-β), while STING activates NF-κB, driving the production of pro-inflammatory cytokines, including TNF-α, IL-6, and IL-1β <b><sup class="cite">[<a href="#ref-18">18</a>]</sup></b>. This dual effect indicates that cGAS-STING activation simultaneously establishes an antiviral state through IFN and recruits inflammatory cells through cytokines <b><sup class="cite">[<a href="#ref-5">5</a>, <a href="#ref-25">25</a>]</sup></b>.</p><h4 class="minor-title"><b>Step 5 - Effector Response and Resolution</b></h4><p>Secreted type I interferons act in a paracrine manner, binding the IFNAR1/IFNAR2 receptor complex on neighbouring cells that weren't originally affected and activating the JAK-STAT signalling cascade <b><sup class="cite">[<a href="#ref-26">26</a>]</sup></b>. JAK1 and TYK2 phosphorylate STAT1 and STAT2, which form the trimeric ISGF3 complex with IRF9 and translocate to the nucleus to induce expression of multiple interferon-stimulated genes (ISGs) <b><sup class="cite">[<a href="#ref-3">3</a>, <a href="#ref-18">18</a>]</sup></b>. ISGs include OAS/RNase L, responsible for viral RNA degradation, PKR (Protein Kinase R), which suppresses translation, and Mx proteins, which block replication. Collectively, these establish a broad antiviral state, amplifying the response across the local tissue <b><sup class="cite">[<a href="#ref-26">26</a>]</sup></b>.</p><p>Crucially, the pathway incorporates negative feedback to prevent excessive activation. Following signalling, STING is trafficked to lysosomes and degraded via p62-mediated autophagy <b><sup class="cite">[<a href="#ref-23">23</a>]</sup></b>, while the phosphodiesterase ENPP1 cleaves extracellular cGAMP to limit paracrine spread <b><sup class="cite">[<a href="#ref-27">27</a>]</sup></b>. Additionally, the cytoplasmic exonuclease TREX1 degrades DNA to remove the cGAS ligand <b><sup class="cite">[<a href="#ref-7">7</a>, <a href="#ref-28">28</a>]</sup></b>. The implication of this resolution machinery is demonstrated by Aicardi-Goutières syndrome, in which loss-of-function mutations in TREX1 and related nucleases drive constitutive cGAS-STING activation and severe type I interferonopathy, providing a direct genetic link between impaired pathway resolution and autoimmune disease <b><sup class="cite">[<a href="#ref-8">8</a>]</sup></b><b></b></p>
+    <figure id="fig-1" class="figure-shell">
+      <div class="figure-inner">
+    <svg viewBox="0 0 1280 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#ffffff;border-radius:14px" role="img" aria-label="Figure 1 — The cGAS-STING signalling cascade">
+      <defs>
+        <marker id="arrow1" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+          <polygon points="0 0, 12 4, 0 8" fill="#7a879e"/>
+        </marker>
+      </defs>
+      <rect width="1280" height="760" rx="24" fill="#ffffff"/>
+      <g font-family="Segoe UI, Arial, sans-serif">
+        <text x="640" y="42" text-anchor="middle" font-size="31" font-weight="700" fill="#1f2937">Figure 1 — The cGAS-STING Signalling Cascade</text>
+
+        <rect x="56" y="130" width="180" height="84" rx="18" fill="#fff6dc" stroke="#e7c870" stroke-width="1.5"/>
+        <text x="146" y="164" text-anchor="middle" font-size="22" font-weight="700" fill="#8c6710">Cytosolic dsDNA</text>
+        <text x="146" y="188" text-anchor="middle" font-size="15" fill="#8c6710">pathogen- or self-derived</text>
+
+        <rect x="304" y="130" width="150" height="84" rx="18" fill="#e8efff" stroke="#adc4ff" stroke-width="1.5"/>
+        <text x="379" y="164" text-anchor="middle" font-size="22" font-weight="700" fill="#2d4bb3">cGAS</text>
+        <text x="379" y="188" text-anchor="middle" font-size="15" fill="#3857bf">DNA sensor</text>
+
+        <rect x="522" y="130" width="182" height="84" rx="18" fill="#edf9f1" stroke="#9ad0ac" stroke-width="1.5"/>
+        <text x="613" y="164" text-anchor="middle" font-size="22" font-weight="700" fill="#1b6840">2′3′-cGAMP</text>
+        <text x="613" y="188" text-anchor="middle" font-size="15" fill="#2f855a">second messenger</text>
+
+        <rect x="772" y="130" width="176" height="84" rx="18" fill="#f3ecff" stroke="#cbb4ff" stroke-width="1.5"/>
+        <text x="860" y="164" text-anchor="middle" font-size="22" font-weight="700" fill="#5b3cc4">STING</text>
+        <text x="860" y="188" text-anchor="middle" font-size="15" fill="#6a4ed0">ER adaptor</text>
+
+        <rect x="1016" y="130" width="208" height="84" rx="18" fill="#fff2f6" stroke="#efb8cf" stroke-width="1.5"/>
+        <text x="1120" y="164" text-anchor="middle" font-size="22" font-weight="700" fill="#9a365c">Golgi / TBK1 hub</text>
+        <text x="1120" y="188" text-anchor="middle" font-size="15" fill="#a33d64">signal amplification</text>
+
+        <line x1="236" y1="172" x2="304" y2="172" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <line x1="454" y1="172" x2="522" y2="172" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <line x1="704" y1="172" x2="772" y2="172" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <line x1="948" y1="172" x2="1016" y2="172" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+
+        <rect x="120" y="332" width="208" height="84" rx="18" fill="#eefaf2" stroke="#9ad0ac" stroke-width="1.5"/>
+        <text x="224" y="366" text-anchor="middle" font-size="21" font-weight="700" fill="#1b6840">Autophagy</text>
+        <text x="224" y="390" text-anchor="middle" font-size="15" fill="#2f855a">non-canonical branch</text>
+
+        <rect x="538" y="332" width="172" height="84" rx="18" fill="#e8efff" stroke="#adc4ff" stroke-width="1.5"/>
+        <text x="624" y="366" text-anchor="middle" font-size="21" font-weight="700" fill="#2d4bb3">IRF3</text>
+        <text x="624" y="390" text-anchor="middle" font-size="15" fill="#3857bf">phosphorylation</text>
+
+        <rect x="952" y="332" width="172" height="84" rx="18" fill="#fff2f6" stroke="#efb8cf" stroke-width="1.5"/>
+        <text x="1038" y="366" text-anchor="middle" font-size="21" font-weight="700" fill="#9a365c">NF-κB</text>
+        <text x="1038" y="390" text-anchor="middle" font-size="15" fill="#a33d64">activation</text>
+
+        <rect x="472" y="498" width="300" height="92" rx="20" fill="#e8efff" stroke="#adc4ff" stroke-width="1.5"/>
+        <text x="622" y="534" text-anchor="middle" font-size="22" font-weight="700" fill="#2d4bb3">Type I interferons</text>
+        <text x="622" y="560" text-anchor="middle" font-size="16" fill="#3857bf">IFN-β / IFN-α + ISG programme</text>
+
+        <rect x="902" y="498" width="272" height="92" rx="20" fill="#fff2f6" stroke="#efb8cf" stroke-width="1.5"/>
+        <text x="1038" y="534" text-anchor="middle" font-size="22" font-weight="700" fill="#9a365c">Inflammatory cytokines</text>
+        <text x="1038" y="560" text-anchor="middle" font-size="16" fill="#a33d64">TNF-α · IL-6 · IL-1β</text>
+
+        <path d="M860 214 V262 H224 V332" fill="none" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <path d="M1120 214 V300 H624 V332" fill="none" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <path d="M1120 214 V300 H1038 V332" fill="none" stroke="#7a879e" stroke-width="2" marker-end="url(#arrow1)"/>
+        <line x1="624" y1="416" x2="624" y2="498" stroke="#5b83f1" stroke-width="2" marker-end="url(#arrow1)"/>
+        <line x1="1038" y1="416" x2="1038" y2="498" stroke="#d87b9e" stroke-width="2" marker-end="url(#arrow1)"/>
+
+        <rect x="92" y="612" width="1096" height="98" rx="18" fill="#f8fafc" stroke="#d8e0ee" stroke-width="1.6"/>
+        <text x="640" y="646" text-anchor="middle" font-size="18" font-weight="700" fill="#24314c">Net effect</text>
+        <text x="640" y="672" text-anchor="middle" font-size="15.5" fill="#5f6b7a">cGAS detects cytosolic DNA, generates cGAMP, activates STING, and branches into</text>
+        <text x="640" y="694" text-anchor="middle" font-size="15.5" fill="#5f6b7a">antiviral interferon signalling, pro-inflammatory cytokine production, and</text>
+        <text x="640" y="716" text-anchor="middle" font-size="15.5" fill="#5f6b7a">autophagy-related responses.</text>
+      </g>
+    </svg>
+    </div>
+      <figcaption><strong>Figure 1.</strong> The complete cGAS-STING signalling pathway from DNA detection to effector response, showing the IRF3/IFN branch (blue), NF-κB/cytokine branch (red), and non-canonical autophagy function (green). Adapted from Hopfner & Hornung (2020) <sup class="cite">[<a href="#ref-18">18</a>]</sup>.</figcaption>
+    </figure>
+    <h3 class="subsection-title">1.3 Autoimmunity - When Self-DNA Triggers the Alarm</h3><p>Although the cGAS-STING pathway evolved to detect foreign DNA from invading pathogens, the critical concern is that cGAS does not appear to distinguish foreign DNA from self-derived DNA <b><sup class="cite">[<a href="#ref-29">29</a>]</sup></b>. Under normal physiological conditions, genomic DNA is rigorously confined to the nucleus and mitochondria <b><sup class="cite">[<a href="#ref-30">30</a>, <a href="#ref-31">31</a>]</sup></b>. Nevertheless, multiple pathological mechanisms lead to aberrant accumulation of self-DNA in the cytoplasm <b><sup class="cite">[<a href="#ref-32">32</a>, <a href="#ref-33">33</a>]</sup></b>.</p><h4 class="minor-title"><b>Mitochondrial DNA (mtDNA) Release</b></h4><p>Cellular stress, viral infection, or metabolic dysfunction damages mitochondria, causing mtDNA to leak through permeabilised outer membranes into the cytoplasm <b><sup class="cite">[<a href="#ref-34">34</a>]</sup></b>. It was revealed that impaired mitophagy, that is, the selective autophagy of damaged mitochondria, dramatically amplifies mtDNA-driven cGAS-STING activation and type I IFN responses <b><sup class="cite">[<a href="#ref-35">35</a>]</sup></b>. Apoptotic caspases normally prevent this by maintaining mitochondrial integrity, but when caspase function is compromised, mtDNA-driven inflammation becomes constitutive, leading to a dangerous self-reinforcing cycle where inflammation damages mitochondria, resulting in mtDNA leakage into the cytosol and subsequent cGAS-STING activation <b><sup class="cite">[<a href="#ref-30">30</a>, <a href="#ref-31">31</a>]</sup></b>. This drives additional inflammation and exacerbates mitochondrial damage <b><sup class="cite">[<a href="#ref-30">30</a>]</sup></b>.</p><h4 class="minor-title"><b>Neutrophil Extracellular Traps (NETs)</b></h4><p>Neutrophils release chromatin-based extracellular webs to trap and kill pathogens. In Systemic Lupus Erythematosus (SLE), however, excessive NETosis fills the extracellular space with self-DNA complexed with antimicrobial proteins <b><sup class="cite">[<a href="#ref-9">9</a>, <a href="#ref-36">36</a>]</sup></b>. It has been demonstrated that NET-derived oxidised mtDNA is highly interferogenic and that impaired DNase I activity in SLE patients prevents efficient NET clearance, perpetuating chronic immune activation and inflammation <b><sup class="cite">[<a href="#ref-36">36</a>]</sup></b>. Similarly, NET-associated proteins were implicated in activating the NLRP3 inflammasome in SLE macrophages, creating an additional inflammatory axis <b><sup class="cite">[<a href="#ref-37">37</a>]</sup></b>.</p><h4 class="minor-title"><b>Clearance defects </b></h4><p>When apoptotic cells are not efficiently cleared by efferocytosis, that is the clearance of apoptotic cells by professional and non-professional phagocytes <b><sup class="cite">[<a href="#ref-38">38</a>]</sup></b>, their DNA persists and can be internalised by neighbouring cells or antigen-presenting cells (APCs) <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>. It was revealed that a deficiency in DNase1L3, which specifically digests chromatin in apoptotic cell microparticles, induces spontaneous autoimmunity in mice, suggesting that failure to clear endogenous DNA drives autoimmune pathology <b><sup class="cite">[<a href="#ref-39">39</a>]</sup></b>. It was also shown that apoptosis-derived membrane vesicles drive cGAS-STING activation and enhance type I IFN production in SLE <b><sup class="cite">[<a href="#ref-40">40</a>]</sup></b>.</p><h4 class="minor-title"><b>Transposable Element Activity</b></h4><p>The fourth and perhaps most unrecognised source of cytoplasmic self-DNA comes from the genome’s own mobile genetic elements <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>. When epigenetic silencing of retrotransposons fails, their reverse transcription generates cytoplasmic DNA intermediates that are indistinguishable from viral replication products, a phenomenon explored in detail in Section 2 <b><sup class="cite">[<a href="#ref-6">6</a>]</sup></b>.</p>
+    <figure id="fig-2" class="figure-shell">
+      <div class="figure-inner">
+    <svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#ffffff;border-radius:14px" role="img" aria-label="Figure 2 — Sources of cytoplasmic self-DNA that activate cGAS">
+      <defs>
+        <marker id="arrow2" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
+          <polygon points="0 0, 12 4, 0 8" fill="#8a98b5"/>
+        </marker>
+      </defs>
+      <rect width="1200" height="760" rx="24" fill="#ffffff"/>
+      <g font-family="Segoe UI, Arial, sans-serif">
+        <text x="600" y="42" text-anchor="middle" font-size="30" font-weight="700" fill="#1f2937">Figure 2 — Sources of Cytoplasmic Self-DNA That Activate cGAS</text>
+
+        <rect x="424" y="248" width="352" height="156" rx="24" fill="#eef3ff" stroke="#c7d7fb" stroke-width="1.3"/>
+        <text x="600" y="308" text-anchor="middle" font-size="35" font-weight="700" fill="#3147a5">cGAS</text>
+        <text x="600" y="340" text-anchor="middle" font-size="19" fill="#4b5d87">cytosolic DNA sensor</text>
+        <text x="600" y="368" text-anchor="middle" font-size="17" fill="#64748b">all four routes converge</text>
+        <text x="600" y="390" text-anchor="middle" font-size="17" fill="#64748b">on the same innate sensor</text>
+
+        <rect x="58" y="118" width="306" height="132" rx="24" fill="#fdf2f7" stroke="#efc8d8" stroke-width="1.3"/>
+        <text x="211" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#9a365c">Transposable elements</text>
+        <text x="211" y="200" text-anchor="middle" font-size="18" fill="#a33d64">LINE-1 reverse transcription</text>
+        <text x="211" y="228" text-anchor="middle" font-size="18" fill="#a33d64">produces cytoplasmic cDNA</text>
+
+        <rect x="836" y="118" width="306" height="132" rx="24" fill="#eefaf2" stroke="#c4e6cf" stroke-width="1.3"/>
+        <text x="989" y="164" text-anchor="middle" font-size="24" font-weight="700" fill="#1b6840">Mitochondrial DNA</text>
+        <text x="989" y="200" text-anchor="middle" font-size="18" fill="#2f855a">released during stress, damage,</text>
+        <text x="989" y="228" text-anchor="middle" font-size="18" fill="#2f855a">or mitochondrial rupture</text>
+
+        <rect x="58" y="500" width="318" height="134" rx="24" fill="#fff8ea" stroke="#eddca4" stroke-width="1.3"/>
+        <text x="217" y="546" text-anchor="middle" font-size="24" font-weight="700" fill="#8c6710">Apoptotic cell DNA</text>
+        <text x="217" y="582" text-anchor="middle" font-size="18" fill="#9a7a22">poor clearance can leave</text>
+        <text x="217" y="610" text-anchor="middle" font-size="18" fill="#9a7a22">extracellular DNA for uptake</text>
+
+        <rect x="824" y="500" width="318" height="134" rx="24" fill="#f3f0ff" stroke="#d6cdf9" stroke-width="1.3"/>
+        <text x="983" y="544" text-anchor="middle" font-size="23" font-weight="700" fill="#5b3cc4">Neutrophil extracellular traps</text>
+        <text x="983" y="580" text-anchor="middle" font-size="18" fill="#6a4ed0">NET-associated chromatin</text>
+        <text x="983" y="608" text-anchor="middle" font-size="18" fill="#6a4ed0">persists in inflammatory settings</text>
+
+        <line x1="364" y1="250" x2="424" y2="292" stroke="#8a98b5" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="836" y1="250" x2="776" y2="292" stroke="#8a98b5" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="376" y1="500" x2="424" y2="360" stroke="#8a98b5" stroke-width="2" marker-end="url(#arrow2)"/>
+        <line x1="824" y1="500" x2="776" y2="360" stroke="#8a98b5" stroke-width="2" marker-end="url(#arrow2)"/>
+
+        <rect x="372" y="542" width="456" height="122" rx="22" fill="#f8fafc" stroke="#d8e0ee" stroke-width="1.3"/>
+        <text x="600" y="584" text-anchor="middle" font-size="22" font-weight="700" fill="#24314c">Shared downstream consequence</text>
+        <text x="600" y="614" text-anchor="middle" font-size="17" fill="#5f6b7a">cGAS activation → cGAMP production</text>
+        <text x="600" y="638" text-anchor="middle" font-size="17" fill="#5f6b7a">→ STING signalling → type I interferons</text>
+        <text x="600" y="658" text-anchor="middle" font-size="17" fill="#5f6b7a">plus inflammatory cytokines</text>
+        <line x1="600" y1="404" x2="600" y2="542" stroke="#8a98b5" stroke-width="2" marker-end="url(#arrow2)"/>
+      </g>
+    </svg>
+    </div>
+      <figcaption><strong>Figure 2.</strong> Sources of cytoplasmic DNA that activate cGAS: four major sources of cytoplasmic self-DNA converging on cGAS activation — transposable elements, mitochondrial DNA, apoptotic cell DNA, and neutrophil extracellular traps <sup class="cite">[<a href="#ref-34">34</a>, <a href="#ref-35">35</a>, <a href="#ref-36">36</a>, <a href="#ref-37">37</a>, <a href="#ref-38">38</a>, <a href="#ref-39">39</a>, <a href="#ref-40">40</a>]</sup>.</figcaption>
+    </figure>
+    </section>
+        <section id="s2" class="section"><h2 class="section-title">2. Transposable Elements - Genomic Passengers As Immune Triggers</h2><h3 class="subsection-title">2.1 Overview and Classification</h3><p>The landmark Human Genome Project revealed that TEs constitute at least 45% of the human genome, significantly more than the approximately 1.5% encoding proteins <b><sup class="cite">[<a href="#ref-41">41</a>]</sup></b>. TEs are classified into two major classes based on their transposition mechanism <b><sup class="cite">[<a href="#ref-42">42</a>]</sup></b> (<a class="xref" href="#fig-3">Figure 3</a>).</p><p><b>A. Class I </b>retrotransposons use a “copy-and-paste” mechanism via an RNA intermediate that is reverse-transcribed back into DNA. These include:</p><div class="list-block"><li> Long Interspersed Nuclear Elements (LINEs), of which LINE-1 (~21% of the genome, ~850,000 copies) is the most significant </li> <li> Short Interspersed Nuclear Elements (SINEs), principally Alu elements (~13%, ~1.5 million copies) </li> <li><b> </b>Long Terminal Repeat (LTR) elements, including human endogenous retroviruses (HERVs, ~8%, 450,000 copies). </li></div><p><b>B. Class II </b>DNA transposons use a “cut-and-paste” mechanism (~3%) but are no longer active in humans and represent genomic “fossils” <b><sup class="cite">[<a href="#ref-41">41</a>, <a href="#ref-43">43</a>]</sup></b> (<a class="xref" href="#fig-3">Figure 3</a>)</p>
+    <figure id="fig-3" class="figure-shell">
+      <div class="figure-inner">
+    <svg viewBox="0 0 1200 860" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#ffffff;border-radius:14px" role="img" aria-label="Figure 3 — Classes of interspersed repeats in the human genome">
+      <defs>
+        <filter id="rowShadow" x="-20%" y="-20%" width="140%" height="160%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#d6dde8" flood-opacity="0.5"/>
+        </filter>
+      </defs>
+      <rect x="0" y="0" width="1200" height="860" rx="24" fill="#ffffff"/>
+      <text x="600" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700" fill="#1f2937">Classes of Interspersed Repeats in the Human Genome</text>
+      <text x="600" y="70" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#6b7280">Adapted from Lander et al. (2001) Nature 409: 860–921 [22]</text>
+
+      <g font-family="Segoe UI, Arial, sans-serif">
+        <text x="90" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">CLASS</text>
+        <text x="300" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">TYPE</text>
+        <text x="585" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">ELEMENT STRUCTURE</text>
+        <text x="855" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">LENGTH</text>
+        <text x="975" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">COPIES</text>
+        <text x="1110" y="116" text-anchor="middle" font-size="15" font-weight="700" fill="#6b7280">GENOME</text>
+
+        <g filter="url(#rowShadow)">
+          <rect x="10" y="130" width="1180" height="112" rx="18" fill="#ffffff" stroke="#e8edf4"/>
+          <rect x="10" y="130" width="6" height="112" rx="3" fill="#3b82f6"/>
+        </g>
+        <text x="34" y="174" font-size="19" font-weight="700" fill="#1d4ed8">LINEs</text>
+        <text x="34" y="200" font-size="14" fill="#6b7280">(e.g. LINE-1)</text>
+        <rect x="252" y="152" width="96" height="30" rx="12" fill="#eef5ff" stroke="#bfd6ff" stroke-width="1.2"/>
+        <text x="300" y="172" text-anchor="middle" font-size="14" font-weight="700" fill="#1e3a8a">Autonomous</text>
+        <rect x="440" y="150" width="46" height="32" rx="8" fill="#bcd5fb" stroke="#69a0f6" stroke-width="1.2"/>
+        <text x="463" y="171" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">5′UTR</text>
+        <polygon points="496,150 552,150 568,166 552,182 496,182" fill="#4f86f7" stroke="#2d63d6" stroke-width="1.2"/>
+        <text x="531" y="171" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ORF1</text>
+        <polygon points="578,150 676,150 692,166 676,182 578,182" fill="#2b59c3" stroke="#1d4ed8" stroke-width="1.2"/>
+        <text x="638" y="171" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">ORF2 (EN + RT)</text>
+        <rect x="704" y="150" width="42" height="32" rx="8" fill="#bcd5fb" stroke="#69a0f6" stroke-width="1.2"/>
+        <text x="725" y="171" text-anchor="middle" font-size="12" font-weight="700" fill="#1e40af">3′UTR</text>
+        <text x="762" y="171" font-size="15" font-weight="700" fill="#3b82f6">AAA</text>
+        <text x="855" y="172" text-anchor="middle" font-size="16" fill="#374151">6–8 kb</text>
+        <text x="975" y="172" text-anchor="middle" font-size="16" font-weight="700" fill="#374151">850,000</text>
+        <rect x="1066" y="146" width="88" height="36" rx="14" fill="#eef4ff" stroke="#d3def6" stroke-width="1.1"/>
+        <text x="1110" y="169" text-anchor="middle" font-size="15" font-weight="700" fill="#1e3a8a">~21%</text>
+
+        <g filter="url(#rowShadow)">
+          <rect x="10" y="250" width="1180" height="112" rx="18" fill="#ffffff" stroke="#e8edf4"/>
+          <rect x="10" y="250" width="6" height="112" rx="3" fill="#ec4899"/>
+        </g>
+        <text x="34" y="294" font-size="19" font-weight="700" fill="#be185d">SINEs</text>
+        <text x="34" y="320" font-size="14" fill="#6b7280">(e.g. Alu)</text>
+        <rect x="240" y="272" width="120" height="30" rx="12" fill="#fff1f7" stroke="#f3c1d6" stroke-width="1.2"/>
+        <text x="300" y="292" text-anchor="middle" font-size="14" font-weight="700" fill="#9d174d">Non-autonomous</text>
+        <rect x="440" y="270" width="40" height="32" rx="8" fill="#f5a7ce" stroke="#ec4899" stroke-width="1.2"/>
+        <text x="460" y="291" text-anchor="middle" font-size="14" font-weight="700" fill="#9d174d">A</text>
+        <rect x="492" y="270" width="40" height="32" rx="8" fill="#f5a7ce" stroke="#ec4899" stroke-width="1.2"/>
+        <text x="512" y="291" text-anchor="middle" font-size="14" font-weight="700" fill="#9d174d">B</text>
+        <text x="548" y="291" font-size="15" font-weight="700" fill="#db2777">AAA</text>
+        <text x="855" y="292" text-anchor="middle" font-size="16" fill="#374151">100–300 bp</text>
+        <text x="975" y="292" text-anchor="middle" font-size="16" font-weight="700" fill="#374151">1,500,000</text>
+        <rect x="1066" y="266" width="88" height="36" rx="14" fill="#fff0f7" stroke="#f8d6e7" stroke-width="1.1"/>
+        <text x="1110" y="289" text-anchor="middle" font-size="15" font-weight="700" fill="#be185d">~13%</text>
+
+        <g filter="url(#rowShadow)">
+          <rect x="10" y="370" width="1180" height="164" rx="18" fill="#ffffff" stroke="#e8edf4"/>
+          <rect x="10" y="370" width="6" height="164" rx="3" fill="#22c55e"/>
+        </g>
+        <text x="34" y="430" font-size="18" font-weight="700" fill="#047857">Retrovirus-</text>
+        <text x="34" y="456" font-size="18" font-weight="700" fill="#047857">like</text>
+        <text x="34" y="484" font-size="14" fill="#6b7280">(HERVs)</text>
+        <rect x="252" y="396" width="96" height="30" rx="12" fill="#eefbf2" stroke="#c6ebd2" stroke-width="1.2"/>
+        <text x="300" y="416" text-anchor="middle" font-size="14" font-weight="700" fill="#0f6b42">Autonomous</text>
+        <rect x="440" y="394" width="26" height="32" rx="6" fill="#22c55e"/>
+        <polygon points="478,394 530,394 544,410 530,426 478,426" fill="#16a34a" stroke="#0f8b3d" stroke-width="1.1"/>
+        <text x="510" y="415" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">gag</text>
+        <polygon points="552,394 604,394 618,410 604,426 552,426" fill="#129346" stroke="#0f8b3d" stroke-width="1.1"/>
+        <text x="584" y="415" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">pol</text>
+        <polygon points="626,394 678,394 692,410 678,426 626,426" fill="#10833f" stroke="#0f8b3d" stroke-width="1.1"/>
+        <text x="658" y="415" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">env</text>
+        <rect x="704" y="394" width="26" height="32" rx="6" fill="#22c55e"/>
+        <text x="453" y="446" text-anchor="middle" font-size="12" fill="#166534">LTR</text>
+        <text x="717" y="446" text-anchor="middle" font-size="12" fill="#166534">LTR</text>
+
+        <rect x="240" y="468" width="120" height="30" rx="12" fill="#eefbf2" stroke="#c6ebd2" stroke-width="1.2"/>
+        <text x="300" y="488" text-anchor="middle" font-size="14" font-weight="700" fill="#0f6b42">Non-autonomous</text>
+        <rect x="440" y="466" width="28" height="32" rx="6" fill="#4ade80"/>
+        <rect x="480" y="466" width="68" height="32" rx="8" fill="#8df0af" stroke="#4ade80" stroke-width="1.1"/>
+        <text x="514" y="487" text-anchor="middle" font-size="13" font-style="italic" fill="#166534">(gag)</text>
+        <rect x="560" y="466" width="28" height="32" rx="6" fill="#4ade80"/>
+        <line x1="588" y1="482" x2="610" y2="482" stroke="#b8c3d6" stroke-width="1.6" stroke-dasharray="4 4"/>
+        <text x="453" y="518" text-anchor="middle" font-size="12" fill="#166534">LTR</text>
+        <text x="574" y="518" text-anchor="middle" font-size="12" fill="#166534">LTR</text>
+
+        <text x="855" y="416" text-anchor="middle" font-size="16" fill="#374151">6–11 kb</text>
+        <text x="855" y="488" text-anchor="middle" font-size="16" fill="#374151">1.5–3 kb</text>
+        <path d="M932 392 L948 392 L948 504 L932 504 M948 448 L962 448" fill="none" stroke="#16a34a" stroke-width="2.2"/>
+        <text x="1000" y="451" text-anchor="middle" font-size="16" font-weight="700" fill="#374151">450,000</text>
+        <rect x="1066" y="430" width="88" height="36" rx="14" fill="#effdf4" stroke="#d6f2df" stroke-width="1.1"/>
+        <text x="1110" y="453" text-anchor="middle" font-size="15" font-weight="700" fill="#166534">~8%</text>
+
+        <g filter="url(#rowShadow)">
+          <rect x="10" y="550" width="1180" height="164" rx="18" fill="#ffffff" stroke="#e8edf4"/>
+          <rect x="10" y="550" width="6" height="164" rx="3" fill="#f59e0b"/>
+        </g>
+        <text x="34" y="620" font-size="18" font-weight="700" fill="#b45309">DNA</text>
+        <text x="34" y="648" font-size="18" font-weight="700" fill="#b45309">transposon</text>
+        <text x="34" y="676" font-size="14" fill="#6b7280">fossils</text>
+        <rect x="252" y="576" width="96" height="30" rx="12" fill="#fff9e8" stroke="#f0e09b" stroke-width="1.2"/>
+        <text x="300" y="596" text-anchor="middle" font-size="14" font-weight="700" fill="#8a5a00">Autonomous</text>
+        <polygon points="440,574 464,590 440,606" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.1"/>
+        <polygon points="478,574 630,574 646,590 630,606 478,606" fill="#b7791f" stroke="#9a6700" stroke-width="1.1"/>
+        <text x="562" y="594" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">transposase</text>
+        <polygon points="660,574 684,590 660,606" fill="#fbbf24" stroke="#f59e0b" stroke-width="1.1"/>
+        <text x="452" y="626" text-anchor="middle" font-size="12" fill="#b45309">ITR</text>
+        <text x="672" y="626" text-anchor="middle" font-size="12" fill="#b45309">ITR</text>
+
+        <rect x="240" y="648" width="120" height="30" rx="12" fill="#fff9e8" stroke="#f0e09b" stroke-width="1.2"/>
+        <text x="300" y="668" text-anchor="middle" font-size="14" font-weight="700" fill="#8a5a00">Non-autonomous</text>
+        <polygon points="440,646 464,662 440,678" fill="#fcd34d" stroke="#f59e0b" stroke-width="1.1"/>
+        <line x1="478" y1="662" x2="646" y2="662" stroke="#c9d0dc" stroke-width="1.8" stroke-dasharray="5 4"/>
+        <polygon points="660,646 684,662 660,678" fill="#fcd34d" stroke="#f59e0b" stroke-width="1.1"/>
+
+        <text x="855" y="596" text-anchor="middle" font-size="16" fill="#374151">2–3 kb</text>
+        <text x="855" y="668" text-anchor="middle" font-size="16" fill="#374151">80–3,000 bp</text>
+        <path d="M932 572 L948 572 L948 684 L932 684 M948 628 L962 628" fill="none" stroke="#d97706" stroke-width="2.2"/>
+        <text x="1000" y="631" text-anchor="middle" font-size="16" font-weight="700" fill="#374151">300,000</text>
+        <rect x="1066" y="610" width="88" height="36" rx="14" fill="#fff8df" stroke="#f4e5a4" stroke-width="1.1"/>
+        <text x="1110" y="633" text-anchor="middle" font-size="15" font-weight="700" fill="#92400e">~3%</text>
+
+        <rect x="12" y="730" width="576" height="50" rx="14" fill="#eef2ff" stroke="#cfd7f3" stroke-width="1.2"/>
+        <text x="300" y="752" text-anchor="middle" font-size="18" font-weight="700" fill="#3743a5">CLASS I — Retrotransposons (copy-and-paste via RNA)</text>
+        <text x="300" y="772" text-anchor="middle" font-size="14" fill="#5b6680">RNA → reverse transcription → DNA copy inserts at new site</text>
+
+        <rect x="612" y="730" width="576" height="50" rx="14" fill="#fff9e6" stroke="#f1e095" stroke-width="1.2"/>
+        <text x="900" y="752" text-anchor="middle" font-size="18" font-weight="700" fill="#8a6600">CLASS II — DNA Transposons (cut-and-paste)</text>
+        <text x="900" y="772" text-anchor="middle" font-size="14" fill="#7b6640">Excise from donor → reinsert at target (inactive in humans)</text>
+
+        <text x="600" y="812" text-anchor="middle" font-size="24" font-weight="700" fill="#273449">Human Genome Composition</text>
+        <rect x="20" y="824" width="1160" height="28" rx="14" fill="#dbe2ee"/>
+        <rect x="20" y="824" width="262" height="28" rx="14" fill="#3b82f6"/>
+        <rect x="282" y="824" width="156" height="28" fill="#ec4899"/>
+        <rect x="438" y="824" width="96" height="28" fill="#22c55e"/>
+        <rect x="534" y="824" width="36" height="28" fill="#d97706"/>
+        <text x="151" y="843" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">LINEs · ~21%</text>
+        <text x="360" y="843" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">SINEs · ~13%</text>
+        <text x="486" y="843" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">LTR · ~8%</text>
+        <text x="552" y="843" text-anchor="middle" font-size="13" font-weight="700" fill="#ffffff">~3%</text>
+        <text x="868" y="843" text-anchor="middle" font-size="14" font-weight="700" fill="#4b5563">Remaining ~55% (introns · intergenic · protein-coding ~1.5%)</text>
+      </g>
+    </svg>
+    </div>
+      <figcaption><strong>Figure 3.</strong> Classes of interspersed repeat in the human genome. Adapted from Lander et al. (2001) <sup class="cite">[<a href="#ref-41">41</a>]</sup>.</figcaption>
+    </figure>
+    
+    <figure id="tbl-1" class="figure-shell table-shell">
+      <div class="figure-inner">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>Subtype</th>
+            <th>Mechanism</th>
+            <th>% genome</th>
+            <th>Active?</th>
+            <th>Key feature</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3"><strong>I — Retrotransposons</strong></td>
+            <td>LTR (HERVs)</td>
+            <td>Copy-paste via RT</td>
+            <td>~8%</td>
+            <td><span class="badge badge-warn">Transcribed only</span></td>
+            <td>Retain <em>gag/pol</em>; resemble retroviruses</td>
+          </tr>
+          <tr>
+            <td><strong>LINEs (LINE-1)</strong></td>
+            <td>Copy-paste via TPRT</td>
+            <td>~21%</td>
+            <td><span class="badge badge-ok">Autonomous</span></td>
+            <td>Only human TE with its own RT + endonuclease</td>
+          </tr>
+          <tr>
+            <td>SINEs (Alu)</td>
+            <td>Copy-paste (depends on LINE-1)</td>
+            <td>~13%</td>
+            <td><span class="badge badge-soft">Via LINE-1</span></td>
+            <td>Most abundant primate TE; ~1.5 million copies</td>
+          </tr>
+          <tr>
+            <td><strong>II — DNA transposons</strong></td>
+            <td>Various</td>
+            <td>Cut-and-paste</td>
+            <td>~3%</td>
+            <td><span class="badge badge-muted">Inactive</span></td>
+            <td>Molecular fossils; inactive in humans</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+      <figcaption><strong>Table 1.</strong> Classification of human transposable elements <sup class="cite">[<a href="#ref-41">41</a>, <a href="#ref-43">43</a>, <a href="#ref-44">44</a>]</sup>.</figcaption>
+    </figure>
+    <p>LINE-1 is of particular significance because it is the only autonomously active TE in the human genome. It encodes two proteins: ORF1p, an RNA-binding protein that forms trimeric complexes, and ORF2p, which possesses both endonuclease and reverse transcriptase (RT) activities, thereby providing the complete molecular machinery for independent retrotransposition through target-primed reverse transcription (TPRT) <b><sup class="cite">[<a href="#ref-44">44</a>]</sup></b>. LINE-1 also mobilises non-autonomous SINEs, particularly Alu elements, in trans, thereby driving the retrotransposition of elements beyond itself <b><sup class="cite">[<a href="#ref-42">42</a>]</sup></b>. Under normal conditions, TEs are epigenetically silenced through a multi-layered defence that includes DNA methylation at CpG sites in the LINE-1 5’UTR promoter, repressive histone modifications, such as H3K9me3, and the binding of chromatin regulators, such as SIRT6 <b><sup class="cite">[<a href="#ref-45">45</a>]</sup></b>. Therefore, impairment of these defences leads to immunologically significant consequences.</p><p>HERVs, although incapable of autonomous retrotransposition due to accumulated mutations, remain transcriptionally active and retain structural features resembling those of their retroviral ancestors, including <i>gag, pol</i>, and sometimes <i>env</i> genes. Their expression increasingly appears to modulate innate immune responses, with particular relevance to neuroinflammation <b><sup class="cite">[<a href="#ref-46">46</a>]</sup></b>.</p>
+    <figure id="fig-4" class="figure-shell">
+      <div class="figure-inner">
+    <svg viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#ffffff;border-radius:14px" role="img" aria-label="Figure 4 — LINE-1 element structure and target-primed reverse transcription">
+      <rect width="1200" height="760" rx="24" fill="#ffffff"/>
+      <g font-family="Segoe UI, Arial, sans-serif">
+        <text x="600" y="34" text-anchor="middle" font-size="27" font-weight="700" fill="#1f2937">Figure 4 — LINE-1 Element Structure</text>
+        <text x="600" y="65" text-anchor="middle" font-size="27" font-weight="700" fill="#1f2937">and Target-Primed Reverse Transcription (TPRT)</text>
+
+        <text x="42" y="118" font-size="24" font-weight="700" fill="#24314c">A. Full-Length LINE-1 Element (~6 kb)</text>
+        <rect x="52" y="138" width="150" height="64" rx="16" fill="#fff5d9" stroke="#e7c870" stroke-width="2"/>
+        <text x="127" y="166" text-anchor="middle" font-size="20" font-weight="700" fill="#8c6710">5′ UTR</text>
+        <text x="127" y="188" text-anchor="middle" font-size="14" fill="#8c6710">promoter</text>
+
+        <rect x="210" y="138" width="265" height="64" rx="16" fill="#e8efff" stroke="#adc4ff" stroke-width="2"/>
+        <text x="342" y="166" text-anchor="middle" font-size="20" font-weight="700" fill="#2d4bb3">ORF1</text>
+        <text x="342" y="188" text-anchor="middle" font-size="14" fill="#3d5cc7">RNA-binding protein (ORF1p)</text>
+
+        <rect x="482" y="138" width="494" height="64" rx="16" fill="#e6f8ec" stroke="#9ad0ac" stroke-width="2"/>
+        <text x="729" y="166" text-anchor="middle" font-size="20" font-weight="700" fill="#1b6840">ORF2</text>
+        <text x="729" y="188" text-anchor="middle" font-size="14" fill="#2f855a">Endonuclease (EN) + Reverse Transcriptase (RT)</text>
+
+        <rect x="984" y="138" width="124" height="64" rx="16" fill="#fdeaf1" stroke="#e8b0c5" stroke-width="2"/>
+        <text x="1046" y="166" text-anchor="middle" font-size="20" font-weight="700" fill="#9a365c">3′ UTR</text>
+        <text x="1046" y="188" text-anchor="middle" font-size="14" fill="#9a365c">poly-A</text>
+
+        <line x1="84" y1="216" x2="1112" y2="216" stroke="#d1d5db" stroke-width="2"/>
+        <text x="600" y="242" text-anchor="middle" font-size="18" fill="#6b7280">~6,000 bp (only ~100 of ~500,000 copies are full-length and active)</text>
+
+        <text x="42" y="304" font-size="24" font-weight="700" fill="#24314c">B. Target-Primed Reverse Transcription (TPRT) Cycle</text>
+
+        <g>
+          <rect x="40" y="332" width="228" height="90" rx="18" fill="#fff8e6" stroke="#e7c870" stroke-width="2"/>
+          <circle cx="68" cy="356" r="18" fill="#f0b44d"/>
+          <text x="68" y="362" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">1</text>
+          <text x="154" y="364" text-anchor="middle" font-size="19" font-weight="700" fill="#8c6710">Transcription</text>
+          <text x="154" y="392" text-anchor="middle" font-size="16" fill="#8c6710">DNA → LINE-1 mRNA</text>
+          <text x="154" y="412" text-anchor="middle" font-size="14" fill="#8c6710">(RNA Pol II)</text>
+
+          <text x="294" y="382" font-size="46" fill="#64748b">→</text>
+
+          <rect x="324" y="332" width="236" height="90" rx="18" fill="#edf4ff" stroke="#adc4ff" stroke-width="2"/>
+          <circle cx="352" cy="356" r="18" fill="#4b74e6"/>
+          <text x="352" y="362" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">2</text>
+          <text x="442" y="364" text-anchor="middle" font-size="19" font-weight="700" fill="#2d4bb3">Translation</text>
+          <text x="442" y="392" text-anchor="middle" font-size="16" fill="#3857bf">mRNA → ORF1p + ORF2p</text>
+          <text x="442" y="412" text-anchor="middle" font-size="14" fill="#3857bf">(cytoplasmic ribosomes)</text>
+
+          <text x="584" y="382" font-size="46" fill="#64748b">→</text>
+
+          <rect x="614" y="332" width="226" height="90" rx="18" fill="#f3ecff" stroke="#cbb4ff" stroke-width="2"/>
+          <circle cx="642" cy="356" r="18" fill="#7757d7"/>
+          <text x="642" y="362" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">3</text>
+          <text x="727" y="364" text-anchor="middle" font-size="19" font-weight="700" fill="#5b3cc4">RNP Assembly</text>
+          <text x="727" y="392" text-anchor="middle" font-size="16" fill="#6a4ed0">ORF1p + ORF2p + mRNA</text>
+          <text x="727" y="412" text-anchor="middle" font-size="14" fill="#6a4ed0">(ribonucleoprotein complex)</text>
+
+          <text x="862" y="382" font-size="46" fill="#64748b">→</text>
+
+          <rect x="898" y="332" width="254" height="90" rx="18" fill="#fdeef4" stroke="#efb8cf" stroke-width="2"/>
+          <circle cx="926" cy="356" r="18" fill="#dd6a96"/>
+          <text x="926" y="362" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">4</text>
+          <text x="1025" y="364" text-anchor="middle" font-size="19" font-weight="700" fill="#a33d64">Nuclear Import</text>
+          <text x="1025" y="392" text-anchor="middle" font-size="16" fill="#a33d64">RNP enters nucleus</text>
+        </g>
+
+        <text x="1026" y="472" font-size="44" fill="#64748b">↓</text>
+
+        <g>
+          <rect x="892" y="508" width="260" height="92" rx="18" fill="#fff1ef" stroke="#efb1a7" stroke-width="2"/>
+          <circle cx="920" cy="534" r="18" fill="#de6b5b"/>
+          <text x="920" y="540" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">5</text>
+          <text x="1022" y="542" text-anchor="middle" font-size="19" font-weight="700" fill="#a33d2d">EN Nicks DNA</text>
+          <text x="1022" y="569" text-anchor="middle" font-size="16" fill="#a33d2d">at TTTT/A consensus site</text>
+          <text x="1022" y="590" text-anchor="middle" font-size="14" fill="#a33d2d">(exposes 3′-OH primer)</text>
+
+          <text x="864" y="562" font-size="46" fill="#64748b">←</text>
+
+          <rect x="576" y="508" width="272" height="92" rx="18" fill="#edf9f1" stroke="#9ad0ac" stroke-width="2"/>
+          <circle cx="598" cy="534" r="18" fill="#59b376"/>
+          <text x="598" y="540" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">6</text>
+          <text x="718" y="542" text-anchor="middle" font-size="19" font-weight="700" fill="#1b6840">Reverse Transcription</text>
+          <text x="718" y="569" text-anchor="middle" font-size="16" fill="#2f855a">ORF2p RT uses 3′-OH</text>
+          <text x="718" y="590" text-anchor="middle" font-size="14" fill="#2f855a">to copy LINE-1 RNA → cDNA</text>
+
+          <text x="548" y="562" font-size="46" fill="#64748b">←</text>
+
+          <rect x="266" y="508" width="272" height="92" rx="18" fill="#f0fbf4" stroke="#9ad0ac" stroke-width="2"/>
+          <circle cx="294" cy="534" r="18" fill="#59b376"/>
+          <text x="294" y="540" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">7</text>
+          <text x="402" y="542" text-anchor="middle" font-size="19" font-weight="700" fill="#1b6840">Integration</text>
+          <text x="402" y="569" text-anchor="middle" font-size="16" fill="#2f855a">New LINE-1 copy inserted</text>
+          <text x="402" y="590" text-anchor="middle" font-size="14" fill="#2f855a">flanked by target-site duplications</text>
+        </g>
+
+        <rect x="74" y="638" width="1052" height="84" rx="18" fill="#fff8e7" stroke="#f0c36b" stroke-width="2"/>
+        <text x="600" y="674" text-anchor="middle" font-size="17" font-weight="700" fill="#9a5800">⚠ Critical: steps 2–3 generate cytoplasmic nucleic-acid intermediates (ssDNA, RNA:DNA hybrids)</text>
+        <text x="600" y="702" text-anchor="middle" font-size="16" fill="#9a5800">These can be sensed by cGAS as “foreign-like” DNA, linking LINE-1 activity to antiviral-style innate immune signalling.</text>
+      </g>
+    </svg>
+    </div>
+      <figcaption><strong>Figure 4.</strong> LINE-1 element structure and target-primed reverse transcription (TPRT). Steps 2–3 generate cytoplasmic DNA intermediates that can activate cGAS. Adapted from Beck et al. (2011) <sup class="cite">[<a href="#ref-44">44</a>]</sup>.</figcaption>
+    </figure>
+    <h3 class="subsection-title">2.2 The “Viral Mimicry” Mechanism</h3><p>The bridge between TE biology and autoimmune pathology has been proposed to operate through a form of viral mimicry, in which endogenous retroelement-derived nucleic acids are processed by innate immune pathways that normally respond to viral infection. Early evidence for this concept demonstrated that failure to degrade endogenous retroelement-derived DNA in Trex1-deficient systems was associated with activation of a cell-intrinsic interferon response and autoimmune pathology <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>.</p><p>The proposed link between LINE-1 derepression and autoimmune pathology can be described as the following sequence of events:</p><div class="list-block"><li><b>Loss of epigenetic silencing permits LINE-1 reactivation</b></li></div><p>Under normal conditions, LINE-1 elements are repressed by epigenetic mechanisms, including DNA methylation. However, when this repression is reduced or lost, LINE-1 transcription may be reactivated. Experimental work has demonstrated that hypomethylation of a human LINE-1 promoter was associated with activation of LINE-1 sense transcription in human bladder cancer cell lines <b><sup class="cite">[<a href="#ref-47">47</a>]</sup></b>.</p><div class="list-block"><li><b>Full-length LINE-1 RNA is translated and forms a ribonucleoprotein complex</b></li></div><p>Active human LINE-1 elements contain an internal RNA polymerase II promoter within the 5′ untranslated region (UTR) and encode two proteins, ORF1p and ORF2p, which are required for retrotransposition <b><sup class="cite">[<a href="#ref-48">48</a>]</sup></b>. It was revealed that these proteins assemble together with LINE-1 RNA to form a ribonucleoprotein complex, which is proposed to represent a key intermediate in the retrotransposition cycle <b><sup class="cite">[<a href="#ref-48">48</a>]</sup></b>.</p><div class="list-block"><li><b>Reverse transcription generates LINE-1-derived DNA intermediates</b></li></div><p>Retrotransposition of LINE-like elements is understood to occur through target-primed reverse transcription, a mechanism first described for non-LTR retrotransposons. <b><sup class="cite">[<a href="#ref-49">49</a>]</sup></b>. In mammalian systems, reverse-transcribed LINE-1 DNA species have been reported to accumulate under certain conditions, including cytoplasmic LINE-1 cDNA in senescent cells, where it was proposed to contribute to inflammatory signalling <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-28">28</a>]</sup></b>.</p><div class="list-block"><li><b>Failure to clear retroelement-derived DNA can promote innate immune activation</b></li></div><p>Similarly, endogenous retroelement-derived DNA has been shown to accumulate in the absence of the exonuclease Trex1, which is associated with activation of a cell-intrinsic interferon response and autoimmune pathology <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>. These findings support the idea that inefficient clearance of retroelement-derived nucleic acids could permit them to act as immunostimulatory ligands <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>.</p><div class="list-block"><li><b>Persistent cytoplasmic DNA may engage innate DNA-sensing pathways</b></li></div><p>cGAS functions as a cytosolic DNA sensor and synthesises 2′3′-cGAMP in response to DNA <b><sup class="cite">[<a href="#ref-4">4</a>]</sup></b>. STING is required for intracellular DNA-triggered type I interferon signalling, suggesting that self-derived cytoplasmic DNA species could feed into and activate this pathway <b><sup class="cite">[<a href="#ref-50">50</a>]</sup></b>.</p><div class="list-block"><li><b>STING signalling promotes downstream interferon responses</b><b></b></li></div><p>Downstream of STING, TBK1-dependent phosphorylation of IRF3 has been reported to promote the induction of type I interferon genes. This signalling cascade resembles the antiviral programme normally activated during infection <b><sup class="cite">[<a href="#ref-51">51</a>]</sup></b>.</p><h4 class="minor-title"><b>Chronic activation may contribute to inflammatory or autoimmune pathology</b></h4><p>Taken together, these studies support a model in which LINE-1 derepression may generate reverse-transcribed DNA intermediates that, when not efficiently cleared, contribute to activation of the cGAS-STING-TBK1-IRF3 interferon axis <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-21">21</a>, <a href="#ref-28">28</a>, <a href="#ref-50">50</a>, <a href="#ref-51">51</a>]</sup></b>. This provides a plausible mechanistic explanation for how transposable element activity could contribute to immune dysregulation through viral mimicry <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>.</p>
+    <figure id="fig-5" class="figure-shell">
+      <div class="figure-inner">
+    <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;background:#ffffff;border-radius:14px" role="img" aria-label="Figure 5 — Viral mimicry: real infection versus transposable-element reactivation">
+      <rect width="1200" height="700" rx="24" fill="#ffffff"/>
+      <g font-family="Segoe UI, Arial, sans-serif">
+        <text x="600" y="42" text-anchor="middle" font-size="31" font-weight="700" fill="#1f2937">Figure 5 — Viral Mimicry: Real Infection vs. TE Reactivation</text>
+
+        <rect x="48" y="82" width="514" height="468" rx="22" fill="#fff3f7" stroke="#efb8cf" stroke-width="2"/>
+        <text x="305" y="118" text-anchor="middle" font-size="24" font-weight="700" fill="#9a365c">VIRAL INFECTION</text>
+
+        <rect x="130" y="142" width="350" height="66" rx="16" fill="#fff8fb" stroke="#dd7fa6" stroke-width="2"/>
+        <text x="305" y="180" text-anchor="middle" font-size="20" font-weight="700" fill="#8c3156">RNA virus enters cell</text>
+        <text x="305" y="252" text-anchor="middle" font-size="44" fill="#475569">↓</text>
+
+        <rect x="130" y="274" width="350" height="72" rx="16" fill="#fff8fb" stroke="#dd7fa6" stroke-width="2"/>
+        <text x="305" y="309" text-anchor="middle" font-size="20" font-weight="700" fill="#8c3156">Viral RNA replicates</text>
+        <text x="305" y="332" text-anchor="middle" font-size="16" fill="#a33d64">reverse-transcription intermediates</text>
+        <text x="305" y="390" text-anchor="middle" font-size="44" fill="#475569">↓</text>
+
+        <rect x="98" y="410" width="414" height="82" rx="18" fill="#f9d9e4" stroke="#dd7fa6" stroke-width="2"/>
+        <text x="305" y="448" text-anchor="middle" font-size="22" font-weight="700" fill="#8c3156">Cytoplasmic viral DNA</text>
+        <text x="305" y="474" text-anchor="middle" font-size="17" fill="#a33d64">ssDNA, RNA:DNA hybrids</text>
+
+        <rect x="176" y="504" width="258" height="62" rx="16" fill="#e8efff" stroke="#adc4ff" stroke-width="2"/>
+        <text x="305" y="541" text-anchor="middle" font-size="21" font-weight="700" fill="#2d4bb3">cGAS → STING → IFN</text>
+
+        <rect x="638" y="82" width="514" height="468" rx="22" fill="#eefaf2" stroke="#9ad0ac" stroke-width="2"/>
+        <text x="895" y="118" text-anchor="middle" font-size="24" font-weight="700" fill="#1b6840">TE REACTIVATION (Viral Mimicry)</text>
+
+        <rect x="710" y="142" width="370" height="66" rx="16" fill="#f8fffb" stroke="#67c58c" stroke-width="2"/>
+        <text x="895" y="176" text-anchor="middle" font-size="20" font-weight="700" fill="#1b6840">Epigenetic silencing fails</text>
+        <text x="895" y="198" text-anchor="middle" font-size="16" fill="#2f855a">↓ methylation, ↓ SIRT6</text>
+        <text x="895" y="252" text-anchor="middle" font-size="44" fill="#475569">↓</text>
+
+        <rect x="710" y="274" width="370" height="72" rx="16" fill="#f8fffb" stroke="#67c58c" stroke-width="2"/>
+        <text x="895" y="309" text-anchor="middle" font-size="20" font-weight="700" fill="#1b6840">LINE-1 → ORF1p + ORF2p</text>
+        <text x="895" y="332" text-anchor="middle" font-size="16" fill="#2f855a">RNP complex assembles</text>
+        <text x="895" y="390" text-anchor="middle" font-size="44" fill="#475569">↓</text>
+
+        <rect x="684" y="410" width="422" height="82" rx="18" fill="#dff5e8" stroke="#67c58c" stroke-width="2"/>
+        <text x="895" y="448" text-anchor="middle" font-size="22" font-weight="700" fill="#1b6840">Cytoplasmic TE-derived DNA</text>
+        <text x="895" y="474" text-anchor="middle" font-size="17" fill="#2f855a">ssDNA, RNA:DNA hybrids</text>
+
+        <rect x="768" y="504" width="254" height="62" rx="16" fill="#e8efff" stroke="#adc4ff" stroke-width="2"/>
+        <text x="895" y="541" text-anchor="middle" font-size="21" font-weight="700" fill="#2d4bb3">cGAS → STING → IFN</text>
+
+        <rect x="458" y="418" width="284" height="52" rx="24" fill="#3047a5"/>
+        <text x="600" y="451" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">IDENTICAL to cGAS</text>
+
+        <text x="600" y="610" text-anchor="middle" font-size="18" font-style="italic" fill="#5f6b7a">Both produce structurally similar cytoplasmic nucleic acids — cGAS responds in essentially the same way to both.</text>
+      </g>
+    </svg>
+    </div>
+      <figcaption><strong>Figure 5.</strong> Viral mimicry: both viral infection (left) and TE reactivation (right) generate structurally similar cytoplasmic nucleic-acid intermediates, to which cGAS responds in essentially the same way. Mechanism adapted from Badarinarayan & Sauter (2021) <sup class="cite">[<a href="#ref-52">52</a>]</sup>.</figcaption>
+    </figure>
+    <p>Several conditions have been reported to promote the reactivation of TEs. Ageing is among the best-characterised examples. SIRT6 was shown to repress LINE-1 retrotransposons by binding their 5′ UTR and mono-ADP-ribosylating KAP1, thereby promoting heterochromatin formation and transcriptional silencing <b><sup class="cite">[<a href="#ref-53">53</a>]</sup></b>. This repression was reported to weaken under conditions of stress and ageing, suggesting that age-associated loss of epigenetic control may permit LINE-1 reactivation <b><sup class="cite">[<a href="#ref-53">53</a>]</sup></b>. In a later study, LINE-1 derepression in senescent cells was associated with accumulation of cytoplasmic LINE-1 cDNA and induction of a type I interferon response, and treatment with the NRTI lamivudine reduced interferon activation and age-associated inflammation in mice <b><sup class="cite">[<a href="#ref-10">10</a>]</sup></b>. Together, these studies support a model in which age-associated failure of LINE-1 repression may contribute to inflammatory signalling.</p><p>Genetic defects in nucleic acid clearance pathways provide an additional line of evidence linking endogenous retroelements to interferon-driven disease. Mutations in TREX1, which encodes a 3′-5′ DNA exonuclease, were identified as a cause of Aicardi-Goutières syndrome <b><sup class="cite">[<a href="#ref-54">54</a>]</sup></b>. Subsequent mechanistic work showed that TREX1 deficiency was associated with accumulation of endogenous retroelement-derived DNA, activation of a cell-intrinsic interferon response, and autoimmune pathology <b><sup class="cite">[<a href="#ref-28">28</a>]</sup></b>. Additionally, it was suggested that TREX1 can suppress LINE-1 activity through additional mechanisms, including depletion of ORF1p, thereby supporting the argument that failure to control retroelement-derived nucleic acids may contribute to chronic inflammatory disease <b><sup class="cite">[<a href="#ref-55">55</a>]</sup></b>. Infection and other forms of cellular stress have also been proposed as triggers of transposable element reactivation, as discussed in Section 3.</p><h3 class="subsection-title">2.3 Transposable Elements in Autoimmune Disease</h3><p>Evidence linking transposable elements (TEs) to autoimmune pathology is now strongest in diseases with prominent interferon signatures, although the quality of evidence varies by condition. In systemic lupus erythematosus (SLE), transcriptomic studies have revealed dysregulated expression of LINE-1 and other repetitive elements in patient immune cells, and cGAMP has been detected in a subset of peripheral blood mononuclear cell samples from patients with active disease, consistent with engagement of the cGAS pathway <b><sup class="cite">[<a href="#ref-9">9</a>, <a href="#ref-56">56</a>]</sup></b>. These findings do not indicate that TE activation is the sole driver of lupus, but they support the idea that endogenous nucleic acids can amplify an already inflamed immune environment.</p><p>The evidence is more heterogeneous in other autoimmune disorders. In rheumatoid arthritis, increased HERV-K (HML-2) expression has been reported in patient samples, and inflammatory cytokines can further increase HERV-K transcription in synovial fibroblasts, suggesting a bidirectional relationship between inflammation and retroelement activity rather than a simple one-way causal model <b><sup class="cite">[<a href="#ref-57">57</a>]</sup></b>. In multiple sclerosis (MS), HERV-W envelope protein has been detected in active demyelinating lesions, particularly in macrophages and microglia, and experimental work indicates that this envelope protein can impair oligodendroglial precursor differentiation through TLR4-dependent inflammatory signalling <b><sup class="cite">[<a href="#ref-58">58</a>, <a href="#ref-59">59</a>]</sup></b>. Together, these studies suggest that retroelement products can operate as immunogenic molecules in diseased tissue, but the strength of causal evidence varies across autoimmune conditions.</p><p>Aicardi-Goutières syndrome (AGS) provides the clearest mechanistic link between defective nucleic-acid control, endogenous retroelements, and interferon-mediated disease <b><sup class="cite">[<a href="#ref-7">7</a>, <a href="#ref-8">8</a>]</sup></b>. Mutations in ADAR1, TREX1 and SAMHD1 each disrupt pathways that normally prevent self-derived nucleic acids from being sensed as danger signals <b><sup class="cite">[<a href="#ref-55">55</a>, <a href="#ref-60">60</a>]</sup></b>. In a human stem-cell model, TREX1-deficient neurons accumulated LINE-1-derived DNA and developed a neuroinflammatory phenotype, whereas inhibition of reverse transcriptase partially rescued this state <b><sup class="cite">[<a href="#ref-61">61</a>]</sup></b>. Genetic studies in mice further showed that cGAS is required for the lethal inflammatory phenotype observed in Trex1 deficiency <b><sup class="cite">[<a href="#ref-62">62</a>]</sup></b>. For this reason, AGS is best understood not simply as a rare paediatric syndrome, but as a high-confidence demonstration that insufficient regulation of endogenous nucleic acids can drive chronic interferonopathy.</p>
+    <figure id="fig-6" class="figure-shell">
+      <div class="figure-inner">
+    <div class="diagram split-diagram">
+      <div class="diagram-panel panel-soft panel-blue">
+        <div class="diagram-title">Normal physiological repression</div>
+        <ul>
+          <li>DNA methylation maintained</li>
+          <li>H3K9me3-rich heterochromatin</li>
+          <li>SIRT6 / chromatin repressors preserve silencing</li>
+        </ul>
+        <div class="diagram-result">LINE-1 remains repressed</div>
+      </div>
+      <div class="diagram-arrow">→</div>
+      <div class="diagram-panel panel-soft panel-rose">
+        <div class="diagram-title">Age-dependent silencing failure</div>
+        <ul>
+          <li>Loss of methylation and chromatin restraint</li>
+          <li>SIRT6 depletion / stress-related derepression</li>
+          <li>Greater probability of TE reactivation</li>
+        </ul>
+        <div class="diagram-chain">LINE-1 reactivation → cytoplasmic cDNA → cGAS-STING → type I IFN → inflammaging</div>
+      </div>
+    </div>
+    </div>
+      <figcaption><strong>Figure 6.</strong> Age-dependent epigenetic silencing failure: young cells maintain TE repression through DNA methylation, H3K9me3 and chromatin repressors, whereas ageing-associated loss of these controls can permit LINE-1 reactivation and cGAS-STING-driven inflammaging <sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>, <a href="#ref-53">53</a>]</sup>.</figcaption>
+    </figure>
+    </section>
+        <section id="s3" class="section"><h2 class="section-title">3. The COVID-19 Connection - From Antiviral Response to Autoimmunity</h2><h3 class="subsection-title">3.1 Reflecting on My Year 3 Wikiblog</h3><p>My original Year 3 Wikiblog addressed SARS-CoV-2 largely based on information available at the time, including acute infection, cytokine dysregulation, and therapeutic approaches such as antivirals, corticosteroids, and JAK inhibitors. What I did not appreciate then was how COVID-19 would raise broader immunological questions about self-versus-non-self nucleic acids, post-viral immune persistence, and the possibility that endogenous retroelements might become relevant during recovery as well as during infection. Revisiting that work now, the main limitation was that it treated viral infection and autoimmunity as adjacent topics rather than as processes that can become mechanistically entangled.</p><h3 class="subsection-title">3.2 SARS-CoV-2 and LINE-1: A Controversial Observation</h3><p>One of the most debated claims in this area is that SARS-CoV-2 RNA can undergo LINE-1-mediated reverse transcription and genomic integration in infected cells. Initial reports in cell cultures identified viral-host junctions with several hallmarks of LINE-1 retrotransposition, and a later follow-up study also detected rare retrotransposition events in infected cells, including non-forced LINE-1 overexpression, although the events were much more frequent when LINE-1 was overexpressed experimentally <b><sup class="cite">[<a href="#ref-42">42</a>, <a href="#ref-63">63</a>]</sup></b>. Therefore, these studies demonstrate that such events can occur under permissive <i>in-vitro</i> conditions.</p><p>However, the interpretation requires caution. The experiments were performed in cell-culture systems, the estimated event frequency was low without exogenous LINE-1 overexpression, and the relevance of these observations <i>in vivo </i>remains unanswered. It is therefore more accurate to treat SARS-CoV-2 integration as a plausible contributor to pathobiology rather than as an established explanation for long COVID. A more confident deduction is that SARS-CoV-2 infection can create a cellular environment rich in inflammation, stress signalling and nucleic-acid sensing, in which endogenous retroelement biology becomes highly relevant.</p>
+    <figure id="fig-7" class="figure-shell">
+      <div class="figure-inner">
+    <div class="diagram pathway-diagram">
+      <div class="pathway-row">
+        <div class="path-node panel-soft panel-rose">SARS-CoV-2 infection</div>
+        <div class="path-arrow">→</div>
+        <div class="path-node panel-soft panel-peach">Inflammatory cytokines<br><span>TNF-α · IL-6 · IFN-related signalling</span></div>
+        <div class="path-arrow">→</div>
+        <div class="path-node panel-soft panel-green">LINE-1 upregulation<br><span>greater RT activity and cDNA generation</span></div>
+      </div>
+      <div class="pathway-row">
+        <div class="path-node panel-soft panel-lavender">Cytoplasmic nucleic-acid intermediates<br><span>ssDNA and RNA:DNA hybrids</span></div>
+        <div class="path-arrow">→</div>
+        <div class="path-node panel-soft panel-blue">cGAS-STING activation<br><span>type I IFN / ISG programme</span></div>
+        <div class="path-arrow">→</div>
+        <div class="path-node panel-soft panel-gold">Persistent immune dysregulation<br><span>possible relevance to Long COVID / PASC</span></div>
+      </div>
+      <div class="return-loop">Feed-forward amplification: interferon and inflammatory signalling can further sustain endogenous nucleic-acid sensing.</div>
+    </div>
+    </div>
+      <figcaption><strong>Figure 7.</strong> The SARS-CoV-2 / LINE-1 / cGAS-STING feed-forward loop: viral infection amplifies inflammation, LINE-1 activity and endogenous nucleic-acid sensing, creating a plausible mechanism for persistent immune dysregulation <sup class="cite">[<a href="#ref-42">42</a>, <a href="#ref-63">63</a>, <a href="#ref-64">64</a>, <a href="#ref-80">80</a>]</sup>.</figcaption>
+    </figure>
+    <h3 class="subsection-title">3.3 Long COVID and Autoimmune Dysregulation</h3><p>Long COVID (post-acute sequelae of SARS-CoV-2 infection, PASC) is better described as a syndrome of overlapping mechanisms than as a single disease entity. A longitudinal multi-omic study identified several early correlates of later PASC, including RNAaemia, Epstein-Barr virus reactivation and specific autoantibodies, implying that persistent symptoms can emerge through more than one immunological route <b><sup class="cite">[<a href="#ref-64">64</a>]</sup></b>. In a separate cohort, anti-nuclear autoantibodies, including anti-U1-snRNP and anti-SS-B/La, remained associated with fatigue and dyspnoea months after infection <b><sup class="cite">[<a href="#ref-65">65</a>]</sup></b>.</p><p>Nevertheless, it is important to note that TEs have not been established to directly drive long COVID. Instead, long COVID provides a clinical setting in which prolonged inflammatory signalling, autoantibody production, and aberrant nucleic-acid sensing coexist, making the TE-cGAS-STING axis mechanistically relevant as a hypothesis worth further testing.</p><h3 class="subsection-title">3.4 Advances in COVID-19 Therapeutics</h3><p>Compared with the therapeutic landscape I described in Year 3, acute COVID-19 management is now more defined than conceptually transformed. Direct antivirals remain most useful early in infection and mainly in patients at higher risk of progression, whereas mechanism-specific therapy for long COVID remains limited <sup class="cite">[<a href="#ref-15">15</a>]</sup>. From this Wikiblog’s perspective, that gap is important: even if dysregulated nucleic-acid sensing contributes to post-viral illness in a subset of patients, this insight has not yet translated into validated trials of selective LINE-1 or cGAS-STING-targeted therapy for long COVID. At present, that part of the story remains hypothesis-generating rather than practice-changing.</p></section>
+        <section id="s4" class="section"><h2 class="section-title">4. Innovations in Immunotherapy - From Mechanism to Treatment</h2><h3 class="subsection-title">4.1 CAR T-Cell Therapy</h3><p>Chimeric antigen receptor (CAR) T-cell therapy has emerged as a significant recent development in the treatment of severe autoimmune disease. In this setting, the intent is not merely transient immunosuppression but rather profound pathogenic B-cell compartmental depletion, particularly in diseases dominated by autoantibody production. In the initial proof-of-concept study, five patients with refractory SLE achieved marked clinical improvement after anti-CD19 CAR T-cell therapy <sup class="cite">[<a href="#ref-16">16</a>]</sup>. A larger follow-up case series extended these observations across refractory SLE, idiopathic inflammatory myositis and systemic sclerosis, with sustained drug-free remissions reported in many patients during follow-up <sup class="cite">[<a href="#ref-17">17</a>]</sup>. These results are noteworthy, but they should still be interpreted as early-stage clinical evidence. The published studies are small, uncontrolled and conducted in highly selected patients treated in specialist centres. Nevertheless, they support the idea that in-depth B-cell reprogramming can reset autoimmune activity in at least some patients.</p><h3 class="subsection-title">4.2 Bispecific Antibodies</h3><p>Bispecific antibodies represent a conceptually related but still exploratory immunotherapeutic strategy. By simultaneously engaging a B-cell target and CD3 on T cells, they are designed to redirect endogenous cytotoxicity without the customised manufacturing required for CAR T-cell therapy. For example, an early clinical trial in SLE, a phase 1b study, is evaluating the CD20-CD3 bispecific antibody mosunetuzumab in patients with active disease <b><sup class="cite">[<a href="#ref-66">66</a>]</sup></b>. However, peer-reviewed efficacy data in autoimmune disease remain limited, and bispecific antibodies are therefore mostly described as investigational therapies.</p><h3 class="subsection-title">4.3 JAK Inhibitors - Blocking the Interferon Signal</h3><p>JAK inhibitors are highly relevant because they target a signalling pathway downstream of nucleic acid sensing. cGAS-STING activates type I interferon production primarily through TBK1 and IRF3 <b><sup class="cite">[<a href="#ref-4">4</a>, <a href="#ref-51">51</a>]</sup></b>. However, JAK inhibitors do not block this upstream sensing step, but they diminish the transcriptional programme that follows once interferons and other cytokines engage their receptors <b><sup class="cite">[<a href="#ref-67">67</a>]</sup></b>. This distinction is crucial because it explains why JAK inhibition can reduce inflammation while the initiating nucleic-acid trigger remains present <b><sup class="cite">[<a href="#ref-67">67</a>]</sup></b>.</p><p>In a phase 2 randomised trial, baricitinib improved skin and joint symptoms in active SLE, supporting the clinical relevance of targeting downstream cytokine signalling in this stage <b><sup class="cite">[<a href="#ref-68">68</a>]</sup></b>. A phase 1 randomised trial of tofacitinib in SLE further reported safety, along with improvements in immunologic and cardiometabolic parameters, including reductions in the type I interferon gene signature, low-density granulocytes, and circulating NET-associated abnormalities <b><sup class="cite">[<a href="#ref-69">69</a>]</sup></b>. Together, these studies indicate that JAK inhibition can attenuate interferon-amplified inflammation, but without directly interrupting cGAS-STING activation.</p><h3 class="subsection-title">4.4 STING Inhibitors</h3><p>Direct STING inhibition presents a promising approach since it targets the pathway closer to the aberrant activation point. Covalent small-molecule antagonists such as C-176 and related compounds were shown to inhibit activation-induced STING palmitoylation and suppress downstream production of inflammatory cytokines in both mouse and human subjects <b><sup class="cite">[<a href="#ref-13">13</a>]</sup></b>. SLE-relevant evidence has also emerged, with a STING antagonist peptide, ISD017, reported to block pathological cytokine responses in cells from lupus patients with elevated type I interferon activity and to ameliorate disease development in a mouse lupus model <b><sup class="cite">[<a href="#ref-70">70</a>]</sup></b>. More recently, ISD017 was reported to reduce glomerulonephritis and improve survival in symptomatic Fcgr2b-deficient mice, supporting the notion that STING inhibition may have therapeutic relevance beyond prevention and into established disease <b><sup class="cite">[<a href="#ref-71">71</a>]</sup></b>. Overall, STING inhibition appears mechanistically compelling, particularly in conditions dominated by excessive interferon production, but the field remains preclinical.</p><h3 class="subsection-title">4.5 RT Inhibitors - Repurposing Antiretrovirals</h3><p>Because LINE-1 encodes its own RT, existing antiretroviral drugs provide a useful means to assess whether retroelement activity contributes to inflammation. In AGS, a pilot study of RT inhibitors reduced interferon signalling, although the clinical signal was modest and the evidence remains preliminary <b><sup class="cite">[<a href="#ref-72">72</a>]</sup></b>. In ageing models, nucleoside reverse-transcriptase inhibitors reduced LINE-1-associated inflammatory phenotypes <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>]</sup></b>. Therefore, these findings propose targeting an upstream trigger rather than suppressing immunity alone, but they have not yet established RT inhibitors as broadly effective treatments for autoimmune disease.</p>
+    <figure id="fig-8" class="figure-shell">
+      <div class="figure-inner">
+    <div class="diagram therapy-diagram">
+      <div class="therapy-track">
+        <div class="therapy-chip chip-green">RT inhibitors</div>
+        <div class="therapy-chip chip-pink">STING inhibitors</div>
+        <div class="therapy-chip chip-blue">JAK inhibitors</div>
+        <div class="therapy-chip chip-gold">CAR T / bispecifics</div>
+      </div>
+      <div class="therapy-row">
+        <div class="therapy-node">LINE-1 / TE trigger</div>
+        <div class="path-arrow">→</div>
+        <div class="therapy-node">Cytoplasmic DNA</div>
+        <div class="path-arrow">→</div>
+        <div class="therapy-node">cGAS / STING</div>
+        <div class="path-arrow">→</div>
+        <div class="therapy-node">IFN / cytokine output</div>
+        <div class="path-arrow">→</div>
+        <div class="therapy-node">Pathogenic immune-cell response</div>
+      </div>
+      <div class="therapy-note">The framework suggests that upstream trigger reduction, midstream pathway inhibition, downstream cytokine blockade, and direct immune-cell targeting may be complementary rather than mutually exclusive.</div>
+    </div>
+    </div>
+      <figcaption><strong>Figure 8.</strong> Therapeutic intervention map showing how upstream trigger reduction, midstream pathway inhibition, downstream cytokine blockade and direct immune-cell targeting sit at different points along the cGAS-STING cascade <sup class="cite">[<a href="#ref-13">13</a>, <a href="#ref-45">45</a>, <a href="#ref-67">67</a>, <a href="#ref-68">68</a>, <a href="#ref-69">69</a>, <a href="#ref-70">70</a>, <a href="#ref-71">71</a>, <a href="#ref-72">72</a>]</sup>.</figcaption>
+    </figure>
+    <h3 class="subsection-title">Therapeutic Summary Table</h3>
+    <figure id="tbl-2" class="figure-shell table-shell">
+      <div class="figure-inner">
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Strategy</th>
+            <th>Main target level</th>
+            <th>Why it matters here</th>
+            <th>Evidence state</th>
+            <th>Main limitation / caution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>CAR T-cells</strong></td>
+            <td>Pathogenic B-cell depletion</td>
+            <td>Can reset autoreactive immune compartments rather than only dampening downstream inflammation</td>
+            <td>Strong early clinical signal in refractory autoimmune disease</td>
+            <td>Specialist-centre therapy; small cohorts; durability and patient selection still matter</td>
+          </tr>
+          <tr>
+            <td><strong>Bispecific antibodies</strong></td>
+            <td>Immune-cell targeting / pathway redirection</td>
+            <td>May allow more selective suppression than broad immunosuppression</td>
+            <td>Investigational / early translational</td>
+            <td>Still limited autoimmune evidence compared with oncology use</td>
+          </tr>
+          <tr>
+            <td><strong>JAK inhibitors</strong></td>
+            <td>Downstream IFN signalling</td>
+            <td>Interrupts cytokine amplification after cGAS-STING activation</td>
+            <td>Clinically established in several inflammatory settings</td>
+            <td>Does not remove the upstream nucleic-acid trigger</td>
+          </tr>
+          <tr>
+            <td><strong>STING inhibitors</strong></td>
+            <td>Core innate immune pathway node</td>
+            <td>Mechanistically attractive when chronic cGAS-STING activation is central</td>
+            <td>Mostly preclinical / early translation</td>
+            <td>Human efficacy and safety remain under active evaluation</td>
+          </tr>
+          <tr>
+            <td><strong>Reverse transcriptase inhibitors</strong></td>
+            <td>Upstream TE-derived cDNA generation</td>
+            <td>Could reduce endogenous nucleic-acid intermediates before cGAS activation</td>
+            <td>Mechanistically promising, but still biomarker-led and context-dependent</td>
+            <td>Not yet a broadly established solution across autoimmune disease</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+      <figcaption><strong>Table 2.</strong> Summary of immunotherapeutic strategies discussed in Section 4, highlighting target level, current evidence state, and major translational limitations <sup class="cite">[<a href="#ref-13">13</a>, <a href="#ref-45">45</a>, <a href="#ref-67">67</a>, <a href="#ref-68">68</a>, <a href="#ref-69">69</a>, <a href="#ref-70">70</a>, <a href="#ref-71">71</a>, <a href="#ref-72">72</a>]</sup>.</figcaption>
+    </figure>
+    </section>
+        <section id="s5" class="section"><h2 class="section-title">5. Neuroinflammation</h2><h3 class="subsection-title">5.1 cGAS-STING in Neurodegenerative Disease</h3><p>The relevance of cGAS-STING extends beyond classic autoimmune disorders. In Alzheimer’s disease (AD) models, cGAS activation has been detected in the brain, and genetic or pharmacological suppression of the pathway reduced amyloid-associated pathology, neuroinflammation and cognitive impairment in 5xFAD mice <b><sup class="cite">[<a href="#ref-73">73</a>]</sup></b>. In Parkinson’s disease (PD) models, alpha-synuclein pathology activates STING-dependent neuroinflammation, but the best current evidence points to activation of a DNA-damage-linked pathway rather than a simple direct interaction between STING and alpha-synuclein <b><sup class="cite">[<a href="#ref-74">74</a>]</sup></b>. In amyotrophic lateral sclerosis (ALS), TDP-43 pathology can trigger mitochondrial DNA release, cGAS-STING activation and inflammatory injury in motor-neuron systems, with elevated cGAMP also detected in patient spinal cord tissue <b><sup class="cite">[<a href="#ref-75">75</a>]</sup></b>.</p><p>MS sits at the border between autoimmunity and neurodegeneration, making it particularly relevant. HERV-W envelope protein is present in active lesions and can impair oligodendrocyte precursor differentiation through TLR4-dependent mechanisms <b><sup class="cite">[<a href="#ref-58">58</a>, <a href="#ref-59">59</a>]</sup></b>. However, this does not establish that cGAS-STING is the dominant pathway in MS, but it does exhibit how endogenous retroelement products can contribute directly to inflammatory injury and remyelination failure within the central nervous system.</p><h3 class="subsection-title">5.2 Ageing, LINE-1, and the Brain</h3><p>Ageing increases the probability of this entire framework. During senescence and ageing, LINE-1 repression becomes less stable, cytoplasmic LINE-1 cDNA accumulates, and type I interferon-associated inflammatory programmes become more prominent <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>]</sup></b>. Nonetheless, this does not indicate that TE activation is implicated in all aspects of brain ageing, but it provides a mechanistically credible route by which age-related epigenetic drift could amplify sterile inflammation in vulnerable tissues.</p>
+    <figure id="fig-9" class="figure-shell">
+      <div class="figure-inner">
+    <div class="diagram split-diagram">
+      <div class="diagram-panel panel-soft panel-green">
+        <div class="diagram-title">Homeostatic CNS conditions</div>
+        <ul>
+          <li>TE repression remains relatively stable</li>
+          <li>Lower burden of cytoplasmic retroelement-derived DNA</li>
+          <li>Innate immune activation kept below chronic threshold</li>
+        </ul>
+        <div class="diagram-result">Homeostatic immune surveillance</div>
+      </div>
+      <div class="diagram-arrow">↔</div>
+      <div class="diagram-panel panel-soft panel-lavender">
+        <div class="diagram-title">Age-associated vulnerable tissue</div>
+        <ul>
+          <li>Epigenetic drift and TE derepression become more likely</li>
+          <li>Endogenous nucleic-acid sensing is more easily sustained</li>
+          <li>Microglial and tissue-level inflammatory tone increases</li>
+        </ul>
+        <div class="diagram-chain">LINE-1 cDNA accumulation → cGAS-STING signalling → chronic IFN response → neuroinflammatory vulnerability</div>
+      </div>
+    </div>
+    </div>
+      <figcaption><strong>Figure 9.</strong> Epigenetic silencing of TEs in healthy versus aged tissues, with emphasis on how ageing-associated failure of repression could amplify sterile inflammation and neuroinflammatory vulnerability <sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>, <a href="#ref-61">61</a>]</sup>.</figcaption>
+    </figure>
+    <h3 class="subsection-title">5.3 AGS as the Rosetta Stone</h3><p>AGS remains the most compelling human model for linking endogenous nucleic acids to neuroinflammation. A human stem-cell study revealed that TREX1 deficiency is sufficient to induce LINE-1 accumulation and neuroinflammatory injury in the nervous system <b><sup class="cite">[<a href="#ref-61">61</a>]</sup></b>, while genetic deletion of cGAS rescues the lethal inflammatory phenotype of Trex1 deficiency in mice <b><sup class="cite">[<a href="#ref-62">62</a>]</sup></b>. The broader implication is prudent but important: If severe inherited failure of nucleic-acid clearance drives early-life interferonopathy, then milder acquired failures of the same surveillance mechanism may contribute to later-life neuroinflammatory disease.</p></section>
+        <section id="s6" class="section"><h2 class="section-title">6. Reflection and Future Horizons</h2><h3 class="subsection-title">Reflective Re-evaluation</h3><p>Three Year 3 courses formed the basis of this portfolio, although I did not recognise their intersection at the time. In Molecular Genetics, TEs were presented mainly as genomic entities: LINE-1 structure, target-primed reverse transcription, and the silencing machinery that keeps mobile DNA under control. In Clinical Immunology, autoimmunity was framed primarily in terms of impaired tolerance, apoptosis, or lymphocyte regulation. In Medical Microbiology, antiviral drugs such as nucleoside reverse-transcriptase inhibitors and JAK inhibitors were discussed in the context of infectious diseases. Although each module was individually coherent, I perceived them as parallel topics rather than as parts of a shared molecular system.</p><p>What changed while researching and creating this Wikiblog was not simply discovering more facts, but acquiring a framework that links these subjects together. The cGAS-STING axis provides that framework as it explains how endogenous nucleic acids generated by TEs or defective clearance pathways can be interpreted as signs of infection, how this sustains interferon production independently of exogenous pathogens, and why therapies first encountered in virology or inflammatory medicine may converge mechanistically on the same pathway.</p><p>The most important intellectual shift for me is therefore methodological. I now read immunology less as a set of isolated disease categories and more as a network of molecular events that recur in different tissues and clinical settings. That shift matters because it changes what counts as a meaningful question. Instead of asking only which immune cells are abnormal in a disease, I am now more likely to ask what source of self-derived signal is keeping those cells activated.</p><h3 class="subsection-title">6.2 Future Horizons</h3><p>Several future directions emerge from this framework. First, there is biomarker-guided stratification, since not all patients with autoimmune or post-viral syndromes are likely to share the same dominant upstream trigger <b><sup class="cite">[<a href="#ref-29">29</a>, <a href="#ref-76">76</a>]</sup></b>. Interferon signatures, circulating nucleic-acid markers, and TE expression patterns may eventually help identify which part of the cGAS-STING cascade is most relevant in a given patient and therefore which therapeutic strategy is most appropriate <b><sup class="cite">[<a href="#ref-76">76</a>, <a href="#ref-77">77</a>]</sup></b>.</p><p>Another prospect is that the most effective long-term treatments will be combinatorial rather than single-agent. The therapeutic landscape explored in this Wikiblog suggests that upstream trigger reduction, midstream pathway inhibition, downstream cytokine blockade, and direct targeting of pathogenic immune cells may ultimately need to be combined rather than used in isolation <b><sup class="cite">[<a href="#ref-13">13</a>, <a href="#ref-45">45</a>, <a href="#ref-64">64</a>, <a href="#ref-76">76</a>]</sup></b>. This would reflect successful multi-target approaches in other fields such as infectious disease and oncology.</p><p>A third priority is to improve understanding of the cGAS-STING axis at the interface between cancer and autoimmunity. Although STING activation can support anti-tumour immunity by inducing type I interferons and amplifying immune effector responses <b><sup class="cite">[<a href="#ref-78">78</a>, <a href="#ref-79">79</a>]</sup></b>, sustained or dysregulated activation may, conversely, promote chronic inflammation, interferon-driven pathology, and autoimmune disease <b><sup class="cite">[<a href="#ref-29">29</a>, <a href="#ref-76">76</a>]</sup></b>. Defining the molecular and cellular conditions that determine whether cGAS-STING signalling is beneficial or pathogenic will therefore be critical not only for autoimmune research, but also for the design of future cancer immunotherapies and inflammatory disease interventions <b><sup class="cite">[<a href="#ref-18">18</a>, <a href="#ref-78">78</a>]</sup></b>.</p><p>This framework also has implications beyond autoimmunity. The growing links between ageing, TE reactivation, inflammaging, and neuroinflammation suggest that the same molecular machinery may contribute to disease across domains that are usually studied individually <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>, <a href="#ref-61">61</a>]</sup></b>. If retroelement-derived nucleic acids help sustain chronic innate immune activation in ageing tissues, then interventions aimed at reducing these upstream triggers may eventually become relevant not only to autoimmune disease, but also to age-associated inflammation and neurodegeneration <b><sup class="cite">[<a href="#ref-10">10</a>, <a href="#ref-45">45</a>, <a href="#ref-61">61</a>]</sup></b>.</p><p>Finally, these ideas could be relevant to post-viral syndromes such as long COVID, although the evidence remains incomplete <b><sup class="cite">[<a href="#ref-63">63</a>, <a href="#ref-64">64</a>, <a href="#ref-77">77</a>]</sup></b>. If, in at least a subset of patients, persistent immune activation is partially sustained by dysregulated endogenous nucleic-acid sensing or TE activity, then therapeutic strategies targeting these mechanisms would be worth testing <b><sup class="cite">[<a href="#ref-63">63</a>]</sup></b>. Currently, however, such possibilities remain hypothesis-based rather than clinically established <b><sup class="cite">[<a href="#ref-64">64</a>, <a href="#ref-80">80</a>]</sup></b>.</p><p>The main lesson I take from this research is that the cGAS-STING pathway is a conceptual bridge between genetics, virology, immunology and ageing biology, which has linked different subject modules I have been introduced to over the course of my studies, and has changed how I now think about disease mechanisms in general. I believe that its continued investigation will provide insights not only into autoimmune disease but into the fundamental relationship between our genome’s mobile elements and the immune system that monitors them.</p>
+    <figure id="fig-10" class="figure-shell">
+      <div class="figure-inner">
+    <div class="timeline">
+      <div class="timepoint"><div class="year">2008</div><div class="milestone">STING identified as an innate immune adaptor</div></div>
+      <div class="timepoint"><div class="year">2013</div><div class="milestone">cGAS and cGAMP define the DNA-sensing axis</div></div>
+      <div class="timepoint"><div class="year">2015</div><div class="milestone">TREX1 / cGAS links sharpen interferonopathy biology</div></div>
+      <div class="timepoint"><div class="year">2019</div><div class="milestone">LINE-1-driven inflammaging enters the picture</div></div>
+      <div class="timepoint"><div class="year">2021</div><div class="milestone">SARS-CoV-2 / LINE-1 debate expands the framework</div></div>
+      <div class="timepoint"><div class="year">2022–24</div><div class="milestone">CAR T, STING inhibition and translational targeting accelerate</div></div>
+      <div class="timepoint"><div class="year">2026</div><div class="milestone">Long COVID, trained immunity and precision-stratification questions intensify</div></div>
+    </div>
+    </div>
+      <figcaption><strong>Figure 10.</strong> Timeline of key discoveries in cGAS-STING and TE biology (2008–2026), from STING identification to recent translational advances <sup class="cite">[<a href="#ref-4">4</a>, <a href="#ref-8">8</a>, <a href="#ref-10">10</a>, <a href="#ref-13">13</a>, <a href="#ref-42">42</a>, <a href="#ref-72">72</a>, <a href="#ref-79">79</a>, <a href="#ref-80">80</a>]</sup>.</figcaption>
+    </figure>
+    </section>
+        <section id="references" class="section"><h2 class="section-title">References</h2><ol class="reference-list"><li id="ref-1">Wells JN, Feschotte C. A field guide to eukaryotic transposable elements. Annu Rev Genet 2020;54:539–61. <a href="https://doi.org/10.1146/annurev-genet-040620-022145">https://doi.org/10.1146/annurev-genet-040620-022145</a> .</li><li id="ref-2">Finnegan DJ. Eukaryotic transposable elements and genome evolution. Trends Genet 1989;5:103–7. <a href="https://doi.org/10.1016/0168-9525(89)90039-5">https://doi.org/10.1016/0168-9525(89)90039-5</a> .</li><li id="ref-3">Ablasser A, Chen ZJ. cGAS in action: Expanding roles in immunity and inflammation. Science 2019;363:eaat8657. <a href="https://doi.org/10.1126/science.aat8657">https://doi.org/10.1126/science.aat8657</a> .</li><li id="ref-4">Sun L, Wu J, Du F, Chen X, Chen ZJ. Cyclic GMP-AMP synthase is a cytosolic DNA sensor that activates the type I interferon pathway. Science 2013;339:786–91. <a href="https://doi.org/10.1126/science.1232458">https://doi.org/10.1126/science.1232458</a> .</li><li id="ref-5">O’Neill LAJ. Immunology. Sensing the dark side of DNA. Science 2013;339:763–4. <a href="https://doi.org/10.1126/science.1234724">https://doi.org/10.1126/science.1234724</a> .</li><li id="ref-6">Gázquez-Gutiérrez A, Witteveldt J, Heras SR, Macias S. Sensing of transposable elements by the antiviral innate immune system. RNA 2021;27:735–52. <a href="https://doi.org/10.1261/rna.078721.121">https://doi.org/10.1261/rna.078721.121</a> .</li><li id="ref-7">Crow YJ, Rehwinkel J. Aicardi-Goutieres syndrome and related phenotypes: linking nucleic acid metabolism with autoimmunity. Hum Mol Genet 2009;18:R130–6. <a href="https://doi.org/10.1093/hmg/ddp293">https://doi.org/10.1093/hmg/ddp293</a> .</li><li id="ref-8">Crow YJ, Manel N. Aicardi–Goutières syndrome and the type I interferonopathies. Nat Rev Immunol 2015;15:429–40. <a href="https://doi.org/10.1038/nri3850">https://doi.org/10.1038/nri3850</a> .</li><li id="ref-9">An J, Durcan L, Karr RM, Briggs TA, Rice GI, Teal TH, et al. Expression of cyclic GMP-AMP synthase in patients with systemic lupus erythematosus: CGAS IN SLE. Arthritis Rheumatol 2017;69:800–7. <a href="https://doi.org/10.1002/art.40002">https://doi.org/10.1002/art.40002</a> .</li><li id="ref-10">De Cecco M, Ito T, Petrashen AP, Elias AE, Skvir NJ, Criscione SW, et al. L1 drives IFN in senescent cells and promotes age-associated inflammation. Nature 2019;566:73–8. <a href="https://doi.org/10.1038/s41586-018-0784-9">https://doi.org/10.1038/s41586-018-0784-9</a> .</li><li id="ref-11">Ishikawa H, Barber GN. STING is an endoplasmic reticulum adaptor that facilitates innate immune signalling. Nature 2008;455:674–8. <a href="https://doi.org/10.1038/nature07317">https://doi.org/10.1038/nature07317</a> .</li><li id="ref-12">Maringer K, Fernandez-Sesma A. Message in a bottle: lessons learned from antagonism of STING signalling during RNA virus infection. Cytokine Growth Factor Rev 2014;25:669–79. <a href="https://doi.org/10.1016/j.cytogfr.2014.08.004">https://doi.org/10.1016/j.cytogfr.2014.08.004</a> .</li><li id="ref-13">Haag SM, Gulen MF, Reymond L, Gibelin A, Abrami L, Decout A, et al. Targeting STING with covalent small-molecule inhibitors. Nature 2018;559:269–73. <a href="https://doi.org/10.1038/s41586-018-0287-8">https://doi.org/10.1038/s41586-018-0287-8</a> .</li><li id="ref-14">Gao D, Wu J, Wu Y-T, Du F, Aroh C, Yan N, et al. Cyclic GMP-AMP synthase is an innate immune sensor of HIV and other retroviruses. Science 2013;341:903–6. <a href="https://doi.org/10.1126/science.1240933">https://doi.org/10.1126/science.1240933</a> .</li><li id="ref-15">Kranzusch PJ, Wilson SC, Lee ASY, Berger JM, Doudna JA, Vance RE. Ancient origin of cGAS-STING reveals mechanism of universal 2’,3' cGAMP signaling. Mol Cell 2015;59:891–903. <a href="https://doi.org/10.1016/j.molcel.2015.07.022">https://doi.org/10.1016/j.molcel.2015.07.022</a> .</li><li id="ref-16">McWhirter SM, Barbalat R, Monroe KM, Fontana MF, Hyodo M, Joncker NT, et al. A host type I interferon response is induced by cytosolic sensing of the bacterial second messenger cyclic-di-GMP. J Exp Med 2009;206:1899–911. <a href="https://doi.org/10.1084/jem.20082874">https://doi.org/10.1084/jem.20082874</a> .</li><li id="ref-17">Wolenski FS, Garbati MR, Lubinski TJ, Traylor-Knowles N, Dresselhaus E, Stefanik DJ, et al. Characterization of the core elements of the NF-κB signaling pathway of the sea anemone Nematostella vectensis. Mol Cell Biol 2011;31:1076–87. <a href="https://doi.org/10.1128/MCB.00927-10">https://doi.org/10.1128/MCB.00927-10</a> .</li><li id="ref-18">Hopfner K-P, Hornung V. Molecular mechanisms and cellular functions of cGAS-STING signalling. Nat Rev Mol Cell Biol 2020;21:501–21. <a href="https://doi.org/10.1038/s41580-020-0244-x">https://doi.org/10.1038/s41580-020-0244-x</a> .</li><li id="ref-19">Du M, Chen ZJ. DNA-induced liquid phase condensation of cGAS activates innate immune signaling. Science 2018;361:704–9. <a href="https://doi.org/10.1126/science.aat1022">https://doi.org/10.1126/science.aat1022</a> .</li><li id="ref-20">Ablasser A. Phase separation focuses DNA sensing. Science 2018;361:646–7. <a href="https://doi.org/10.1126/science.aau6019">https://doi.org/10.1126/science.aau6019</a> .</li><li id="ref-21">Wu J, Sun L, Chen X, Du F, Shi H, Chen C, et al. Cyclic GMP-AMP is an endogenous second messenger in innate immune signaling by cytosolic DNA. Science 2013;339:826–30. <a href="https://doi.org/10.1126/science.1229963">https://doi.org/10.1126/science.1229963</a> .</li><li id="ref-22">Zhang C, Shang G, Gui X, Zhang X, Bai X-C, Chen ZJ. Structural basis of STING binding with and phosphorylation by TBK1. Nature 2019;567:394–8. <a href="https://doi.org/10.1038/s41586-019-1000-2">https://doi.org/10.1038/s41586-019-1000-2</a> .</li><li id="ref-23">Gui X, Yang H, Li T, Tan X, Shi P, Li M, et al. Autophagy induction via STING trafficking is a primordial function of the cGAS pathway. Nature 2019;567:262–6. <a href="https://doi.org/10.1038/s41586-019-1006-9">https://doi.org/10.1038/s41586-019-1006-9</a> .</li><li id="ref-24">Mukai K, Konno H, Akiba T, Uemura T, Waguri S, Kobayashi T, et al. Activation of STING requires palmitoylation at the Golgi. Nat Commun 2016;7:11932. <a href="https://doi.org/10.1038/ncomms11932">https://doi.org/10.1038/ncomms11932</a> .</li><li id="ref-25">Zhao B, Du F, Xu P, Shu C, Sankaran B, Bell SL, et al. A conserved PLPLRT/SD motif of STING mediates the recruitment and activation of TBK1. Nature 2019;569:718–22. <a href="https://doi.org/10.1038/s41586-019-1228-x">https://doi.org/10.1038/s41586-019-1228-x</a> .</li><li id="ref-26">Schoggins JW, MacDuff DA, Imanaka N, Gainey MD, Shrestha B, Eitson JL, et al. Pan-viral specificity of IFN-induced genes reveals new roles for cGAS in innate immunity. Nature 2014;505:691–5. <a href="https://doi.org/10.1038/nature12862">https://doi.org/10.1038/nature12862</a> .</li><li id="ref-27">Li L, Yin Q, Kuss P, Maliga Z, Millán JL, Wu H, et al. Hydrolysis of 2’3'-cGAMP by ENPP1 and design of nonhydrolyzable analogs. Nat Chem Biol 2014;10:1043–8. <a href="https://doi.org/10.1038/nchembio.1661">https://doi.org/10.1038/nchembio.1661</a> .</li><li id="ref-28">Stetson DB, Ko JS, Heidmann T, Medzhitov R. Trex1 prevents cell-intrinsic initiation of autoimmunity. Cell 2008;134:587–98. <a href="https://doi.org/10.1016/j.cell.2008.06.032">https://doi.org/10.1016/j.cell.2008.06.032</a> .</li><li id="ref-29">Decout A, Katz JD, Venkatraman S, Ablasser A. The cGAS-STING pathway as a therapeutic target in inflammatory diseases. Nat Rev Immunol 2021;21:548–69. <a href="https://doi.org/10.1038/s41577-021-00524-z">https://doi.org/10.1038/s41577-021-00524-z</a> .</li><li id="ref-30">White MJ, McArthur K, Metcalf D, Lane RM, Cambier JC, Herold MJ, et al. Apoptotic caspases suppress mtDNA-induced STING-mediated type I IFN production. Cell 2014;159:1549–62. <a href="https://doi.org/10.1016/j.cell.2014.11.036">https://doi.org/10.1016/j.cell.2014.11.036</a> .</li><li id="ref-31">Rongvaux A, Jackson R, Harman CCD, Li T, West AP, de Zoete MR, et al. Apoptotic caspases prevent the induction of type I interferons by mitochondrial DNA. Cell 2014;159:1563–77. <a href="https://doi.org/10.1016/j.cell.2014.11.037">https://doi.org/10.1016/j.cell.2014.11.037</a> .</li><li id="ref-32">Lan YY, Londoño D, Bouley R, Rooney MS, Hacohen N. Dnase2a deficiency uncovers lysosomal clearance of damaged nuclear DNA via autophagy. Cell Rep 2014;9:180–92. <a href="https://doi.org/10.1016/j.celrep.2014.08.074">https://doi.org/10.1016/j.celrep.2014.08.074</a> .</li><li id="ref-33">Ahn J, Gutman D, Saijo S, Barber GN. STING manifests self DNA-dependent inflammatory disease. Proc Natl Acad Sci U S A 2012;109:19386–91. <a href="https://doi.org/10.1073/pnas.1215006109">https://doi.org/10.1073/pnas.1215006109</a> .</li><li id="ref-34">Riley JS, Tait SW. Mitochondrial DNA in inflammation and immunity. EMBO Rep 2020;21:e49799. <a href="https://doi.org/10.15252/embr.201949799">https://doi.org/10.15252/embr.201949799</a> .</li><li id="ref-35">West AP, Khoury-Hanold W, Staron M, Tal MC, Pineda CM, Lang SM, et al. Mitochondrial DNA stress primes the antiviral innate immune response. Nature 2015;520:553–7. <a href="https://doi.org/10.1038/nature14156">https://doi.org/10.1038/nature14156</a> .</li><li id="ref-36">Lood C, Blanco LP, Purmalek MM, Carmona-Rivera C, De Ravin SS, Smith CK, et al. Neutrophil extracellular traps enriched in oxidized mitochondrial DNA are interferogenic and contribute to lupus-like disease. Nat Med 2016;22:146–53. <a href="https://doi.org/10.1038/nm.4027">https://doi.org/10.1038/nm.4027</a> .</li><li id="ref-37">Kahlenberg JM, Kaplan MJ. Little peptide, big effects: the role of LL-37 in inflammation and autoimmune disease. J Immunol 2013;191:4895–901. <a href="https://doi.org/10.4049/jimmunol.1302005">https://doi.org/10.4049/jimmunol.1302005</a> .</li><li id="ref-38">Doran AC, Yurdagul A Jr, Tabas I. Efferocytosis in health and disease. Nat Rev Immunol 2020;20:254–67. <a href="https://doi.org/10.1038/s41577-019-0240-6">https://doi.org/10.1038/s41577-019-0240-6</a> .</li><li id="ref-39">Napirei M, Karsunky H, Zevnik B, Stephan H, Mannherz HG, Möröy T. Features of systemic lupus erythematosus in Dnase1-deficient mice. Nat Genet 2000;25:177–81. <a href="https://doi.org/10.1038/76032">https://doi.org/10.1038/76032</a> .</li><li id="ref-40">Kato Y, Park J, Takamatsu H, Konaka H, Aoki W, Aburaya S, et al. Apoptosis-derived membrane vesicles drive the cGAS-STING pathway and enhance type I IFN production in systemic lupus erythematosus. Ann Rheum Dis 2018;77:1507–15. <a href="https://doi.org/10.1136/annrheumdis-2018-212988">https://doi.org/10.1136/annrheumdis-2018-212988</a> .</li><li id="ref-41">Lander ES, Linton LM, Birren B, Nusbaum C, Zody MC, Baldwin J, et al. Initial sequencing and analysis of the human genome. Nature 2001;409:860–921. <a href="https://doi.org/10.1038/35057062">https://doi.org/10.1038/35057062</a> .</li><li id="ref-42">Zhang L, Richards A, Barrasa MI, Hughes SH, Young RA, Jaenisch R. Reverse-transcribed SARS-CoV-2 RNA can integrate into the genome of cultured human cells and can be expressed in patient-derived tissues. Proc Natl Acad Sci U S A 2021;118:e2105968118. <a href="https://doi.org/10.1073/pnas.2105968118">https://doi.org/10.1073/pnas.2105968118</a> .</li><li id="ref-43">Bourque G, Burns KH, Gehring M, Gorbunova V, Seluanov A, Hammell M, et al. Ten things you should know about transposable elements. Genome Biol 2018;19:199. <a href="https://doi.org/10.1186/s13059-018-1577-z">https://doi.org/10.1186/s13059-018-1577-z</a> .</li><li id="ref-44">Beck CR, Garcia-Perez JL, Badge RM, Moran JV. LINE-1 elements in structural variation and disease. Annu Rev Genomics Hum Genet 2011;12:187–215. <a href="https://doi.org/10.1146/annurev-genom-082509-141802">https://doi.org/10.1146/annurev-genom-082509-141802</a> .</li><li id="ref-45">Simon M, Van Meter M, Ablaeva J, Ke Z, Gonzalez RS, Taguchi T, et al. LINE1 derepression in aged wild-type and SIRT6-deficient mice drives inflammation. Cell Metab 2019;29:871–85.e5. <a href="https://doi.org/10.1016/j.cmet.2019.02.014">https://doi.org/10.1016/j.cmet.2019.02.014</a> .</li><li id="ref-46">Grandi N, Tramontano E. Human Endogenous Retroviruses are ancient acquired elements still shaping innate immune responses. Front Immunol 2018;9:2039. <a href="https://doi.org/10.3389/fimmu.2018.02039">https://doi.org/10.3389/fimmu.2018.02039</a> .</li><li id="ref-47">Wolff EM, Byun H-M, Han HF, Sharma S, Nichols PW, Siegmund KD, et al. Hypomethylation of a LINE-1 promoter activates an alternate transcript of the MET oncogene in bladders with cancer. PLoS Genet 2010;6:e1000917. <a href="https://doi.org/10.1371/journal.pgen.1000917">https://doi.org/10.1371/journal.pgen.1000917</a> .</li><li id="ref-48">Doucet AJ, Hulme AE, Sahinovic E, Kulpa DA, Moldovan JB, Kopera HC, et al. Characterization of LINE-1 ribonucleoprotein particles. PLoS Genet 2010;6:e1001150. <a href="https://doi.org/10.1371/journal.pgen.1001150">https://doi.org/10.1371/journal.pgen.1001150</a> .</li><li id="ref-49">Luan DD, Korman MH, Jakubczak JL, Eickbush TH. Reverse transcription of R2Bm RNA is primed by a nick at the chromosomal target site: a mechanism for non-LTR retrotransposition. Cell 1993;72:595–605. <a href="https://doi.org/10.1016/0092-8674(93)90078-5">https://doi.org/10.1016/0092-8674(93)90078-5</a> .</li><li id="ref-50">Ishikawa H, Ma Z, Barber GN. STING regulates intracellular DNA-mediated, type I interferon-dependent innate immunity. Nature 2009;461:788–92. <a href="https://doi.org/10.1038/nature08476">https://doi.org/10.1038/nature08476</a> .</li><li id="ref-51">Tanaka Y, Chen ZJ. STING specifies IRF3 phosphorylation by TBK1 in the cytosolic DNA signaling pathway. Sci Signal 2012;5:ra20. <a href="https://doi.org/10.1126/scisignal.2002521">https://doi.org/10.1126/scisignal.2002521</a> .</li><li id="ref-52">Srinivasachar Badarinarayan S, Sauter D. Switching sides: How endogenous retroviruses protect us from viral infections. J Virol 2021;95. <a href="https://doi.org/10.1128/JVI.02299-20">https://doi.org/10.1128/JVI.02299-20</a> .</li><li id="ref-53">Van Meter M, Kashyap M, Rezazadeh S, Geneva AJ, Morello TD, Seluanov A, et al. SIRT6 represses LINE1 retrotransposons by ribosylating KAP1 but this repression fails with stress and age. Nat Commun 2014;5:5011. <a href="https://doi.org/10.1038/ncomms6011">https://doi.org/10.1038/ncomms6011</a> .</li><li id="ref-54">Crow YJ, Hayward BE, Parmar R, Robins P, Leitch A, Ali M, et al. Mutations in the gene encoding the 3’-5' DNA exonuclease TREX1 cause Aicardi-Goutières syndrome at the AGS1 locus. Nat Genet 2006;38:917–20. <a href="https://doi.org/10.1038/ng1845">https://doi.org/10.1038/ng1845</a> .</li><li id="ref-55">Li P, Du J, Goodier JL, Hou J, Kang J, Kazazian HH Jr, et al. Aicardi–Goutières syndrome protein TREX1 suppresses L1 and maintains genome integrity through exonuclease-independent ORF1p depletion. Nucleic Acids Res 2017;45:4619–31. <a href="https://doi.org/10.1093/nar/gkx178">https://doi.org/10.1093/nar/gkx178</a> .</li><li id="ref-56">Kelly M, Lihua S, Zhe Z, Li S, Yoselin P, Michelle P, et al. Transposable element dysregulation in systemic lupus erythematosus and regulation by histone conformation and Hsp90. Clin Immunol 2018;197:6–18. <a href="https://doi.org/10.1016/j.clim.2018.08.011">https://doi.org/10.1016/j.clim.2018.08.011</a> .</li><li id="ref-57">Freimanis G, Hooley P, Ejtehadi HD, Ali HA, Veitch A, Rylance PB, et al. A role for human endogenous retrovirus-K (HML-2) in rheumatoid arthritis: investigating mechanisms of pathogenesis: A role for HERV-K in rheumatoid arthritis. Clin Exp Immunol 2010;160:340–7. <a href="https://doi.org/10.1111/j.1365-2249.2010.04110.x">https://doi.org/10.1111/j.1365-2249.2010.04110.x</a> .</li><li id="ref-58">van Horssen J, van der Pol S, Nijland P, Amor S, Perron H. Human endogenous retrovirus W in brain lesions: Rationale for targeted therapy in multiple sclerosis. Mult Scler Relat Disord 2016;8:11–8. <a href="https://doi.org/10.1016/j.msard.2016.04.006">https://doi.org/10.1016/j.msard.2016.04.006</a> .</li><li id="ref-59">Kremer D, Schichel T, Förster M, Tzekova N, Bernard C, van der Valk P, et al. Human endogenous retrovirus type W envelope protein inhibits oligodendroglial precursor cell differentiation: Retroviruses and Myelin Repair. Ann Neurol 2013;74:721–32. <a href="https://doi.org/10.1002/ana.23970">https://doi.org/10.1002/ana.23970</a> .</li><li id="ref-60">Rice GI, Kasher PR, Forte GMA, Mannion NM, Greenwood SM, Szynkiewicz M, et al. Mutations in ADAR1 cause Aicardi-Goutières syndrome associated with a type I interferon signature. Nat Genet 2012;44:1243–8. <a href="https://doi.org/10.1038/ng.2414">https://doi.org/10.1038/ng.2414</a> .</li><li id="ref-61">Thomas CA, Tejwani L, Trujillo CA, Negraes PD, Herai RH, Mesci P, et al. Modeling of TREX1-dependent autoimmune disease using human stem cells highlights L1 accumulation as a source of neuroinflammation. Cell Stem Cell 2017;21:319–31.e8. <a href="https://doi.org/10.1016/j.stem.2017.07.009">https://doi.org/10.1016/j.stem.2017.07.009</a> .</li><li id="ref-62">Gray EE, Treuting PM, Woodward JJ, Stetson DB. Cutting edge: cGAS is required for lethal autoimmune disease in the Trex1-deficient mouse model of Aicardi–Goutières syndrome. J Immunol 2015;195:1939–43. <a href="https://doi.org/10.4049/jimmunol.1500969">https://doi.org/10.4049/jimmunol.1500969</a> .</li><li id="ref-63">Zhang L, Bisht P, Flamier A, Barrasa MI, Friesen M, Richards A, et al. LINE1-mediated reverse transcription and genomic integration of SARS-CoV-2 mRNA detected in virus-infected but not in viral mRNA-transfected cells. Viruses 2023;15:629. <a href="https://doi.org/10.3390/v15030629">https://doi.org/10.3390/v15030629</a> .</li><li id="ref-64">Su Y, Yuan D, Chen DG, Ng RH, Wang K, Choi J, et al. Multiple early factors anticipate post-acute COVID-19 sequelae. Cell 2022;185:881–95.e20. <a href="https://doi.org/10.1016/j.cell.2022.01.014">https://doi.org/10.1016/j.cell.2022.01.014</a> .</li><li id="ref-65">Son K, Jamil R, Chowdhury A, Mukherjee M, Venegas C, Miyasaki K, et al. Circulating anti-nuclear autoantibodies in COVID-19 survivors predict long COVID symptoms. Eur Respir J 2023;61. <a href="https://doi.org/10.1183/13993003.00970-2022">https://doi.org/10.1183/13993003.00970-2022</a> .</li><li id="ref-66">ClinicalTrials.gov n.d. <a href="https://clinicaltrials.gov/study/NCT05155345">https://clinicaltrials.gov/study/NCT05155345</a> (accessed April 10, 2026).</li><li id="ref-67">Zhang M, Zou Y, Zhou X, Zhou J. Inhibitory targeting cGAS-STING-TBK1 axis: Emerging strategies for autoimmune diseases therapy. Front Immunol 2022;13:954129. <a href="https://doi.org/10.3389/fimmu.2022.954129">https://doi.org/10.3389/fimmu.2022.954129</a> .</li><li id="ref-68">Wallace DJ, Furie RA, Tanaka Y, Kalunian KC, Mosca M, Petri MA, et al. Baricitinib for systemic lupus erythematosus: a double-blind, randomised, placebo-controlled, phase 2 trial. Lancet 2018;392:222–31. <a href="https://doi.org/10.1016/S0140-6736(18)31363-1">https://doi.org/10.1016/S0140-6736(18)31363-1</a> .</li><li id="ref-69">Hasni SA, Gupta S, Davis M, Poncio E, Temesgen-Oyelakin Y, Carlucci PM, et al. Phase 1 double-blind randomized safety trial of the Janus kinase inhibitor tofacitinib in systemic lupus erythematosus. Nat Commun 2021;12:3391. <a href="https://doi.org/10.1038/s41467-021-23361-z">https://doi.org/10.1038/s41467-021-23361-z</a> .</li><li id="ref-70">Prabakaran T, Troldborg A, Kumpunya S, Alee I, Marinković E, Windross SJ, et al. A STING antagonist modulating the interaction with STIM1 blocks ER-to-Golgi trafficking and inhibits lupus pathology. EBioMedicine 2021;66:103314. <a href="https://doi.org/10.1016/j.ebiom.2021.103314">https://doi.org/10.1016/j.ebiom.2021.103314</a> .</li><li id="ref-71">Alee I, Chantawichitwong P, Leelahavanichkul A, Paludan SR, Pisitkun T, Pisitkun P. The STING inhibitor (ISD-017) reduces glomerulonephritis in 129.B6.Fcgr2b-deficient mice. Sci Rep 2024;14:11020. <a href="https://doi.org/10.1038/s41598-024-61597-z">https://doi.org/10.1038/s41598-024-61597-z</a> .</li><li id="ref-72">Rice GI, Meyzer C, Bouazza N, Hully M, Boddaert N, Semeraro M, et al. Reverse-transcriptase inhibitors in the aicardi–Goutières syndrome. N Engl J Med 2018;379:2275–7. <a href="https://doi.org/10.1056/NEJMc1810983">https://doi.org/10.1056/NEJMc1810983</a> .</li><li id="ref-73">Xie X, Ma G, Li X, Zhao J, Zhao Z, Zeng J. Activation of innate immune cGAS-STING pathway contributes to Alzheimer’s pathogenesis in 5×FAD mice. Neuroscience 2022.</li><li id="ref-74">Hinkle JT, Patel J, Panicker N, Karuppagounder SS, Biswas D, Belingon B, et al. STING mediates neurodegeneration and neuroinflammation in nigrostriatal α-synucleinopathy. Proc Natl Acad Sci U S A 2022;119:e2118819119. <a href="https://doi.org/10.1073/pnas.2118819119">https://doi.org/10.1073/pnas.2118819119</a> .</li><li id="ref-75">Yu C-H, Davidson S, Harapas CR, Hilton JB, Mlodzianoski MJ, Laohamonthonkul P, et al. TDP-43 triggers mitochondrial DNA release via mPTP to activate cGAS/STING in ALS. Cell 2020;183:636–49.e18. <a href="https://doi.org/10.1016/j.cell.2020.09.020">https://doi.org/10.1016/j.cell.2020.09.020</a> .</li><li id="ref-76">Motwani M, Pesiridis S, Fitzgerald KA. DNA sensing by the cGAS-STING pathway in health and disease. Nat Rev Genet 2019;20:657–74. <a href="https://doi.org/10.1038/s41576-019-0151-1">https://doi.org/10.1038/s41576-019-0151-1</a> .</li><li id="ref-77">Klein J, Wood J, Jaycox JR, Dhodapkar RM, Lu P, Gehlhausen JR, et al. Distinguishing features of long COVID identified through immune profiling. Nature 2023;623:139–48. <a href="https://doi.org/10.1038/s41586-023-06651-y">https://doi.org/10.1038/s41586-023-06651-y</a> .</li><li id="ref-78">Barber GN. STING: infection, inflammation and cancer. Nat Rev Immunol 2015;15:760–70. <a href="https://doi.org/10.1038/nri3921">https://doi.org/10.1038/nri3921</a> .</li><li id="ref-79">Chin EN, Yu C, Vartabedian VF, Jia Y, Kumar M, Gamo AM, et al. Antitumor activity of a systemic STING-activating non-nucleotide cGAMP mimetic. Science 2020;369:993–9. <a href="https://doi.org/10.1126/science.abb4255">https://doi.org/10.1126/science.abb4255</a> .</li><li id="ref-80">Queiroz MAF, Brito WRDS, Pereira KAS, Pereira LMS, Amoras E da SG, Lima SS, et al. Severe COVID-19 and long COVID are associated with high expression of STING, cGAS and IFN-α. Sci Rep 2024;14:4974. <a href="https://doi.org/10.1038/s41598-024-55696-0">https://doi.org/10.1038/s41598-024-55696-0</a> .</li></ol></section>
+        <section id="appendix" class="section"><h2 class="section-title">Appendix — Original Y3 Work</h2><p>Courses referenced:</p><div class="list-block"><li>Clinical Immunology and Haematology 3A</li> <li>Medical Microbiology </li> <li>Molecular Genetics</li></div><p>Links to relevant lecture material and coursework that inspired the Wikiblog creation:</p>
+<div class="appendix-block">
+  <h3 class="subsection-title">Appendix — Original Y3 Work</h3>
+  <p>This appendix collects the Year 3 lecture material and coursework that informed the development of this wikiblog.</p>
+
+  <div class="appendix-group">
+    <div class="appendix-group-title">Courses referenced</div>
+    <ul>
+      <li><strong>Clinical Immunology and Haematology 3A (CIH3A)</strong></li>
+      <li><strong>Medical Microbiology 3 (MM3)</strong></li>
+      <li><strong>Molecular Genetics 3 (MoG3)</strong></li>
+    </ul>
+  </div>
+
+  <div class="appendix-group">
+    <div class="appendix-group-title">CIH3A Relevant Lectures</div>
+    <ul class="appendix-links">
+      <li><a href="https://drive.google.com/file/d/1zdncQk3IsHBRDZwvHwqTwPXhSJy6-9Mm/view?usp=drive_link">Lecture file 1</a></li>
+      <li><a href="https://drive.google.com/file/d/1zdncQk3IsHBRDZwvHwqTwPXhSJy6-9Mm/view?usp=drive_link">Lecture file 2</a></li>
+      <li><a href="https://drive.google.com/file/d/1LhkJ_lsFzRvnZUk9uWwlp1Vf8mJnPjDI/view?usp=drive_link">Lecture file 3</a></li>
+      <li><a href="https://drive.google.com/file/d/1A6nYb0S7Mlz-BEFpi_AWdA6hYAoyoejH/view?usp=drive_link">Lecture file 4</a></li>
+    </ul>
+  </div>
+
+  <div class="appendix-group">
+    <div class="appendix-group-title">CIH3A Wikiblog</div>
+    <p>My contribution in the Wikiblog focused mainly on Kinase Inhibitors and producing the Introduction, while all group members mutually contributed to the Discussion section.</p>
+    <ul class="appendix-links">
+      <li><a href="https://drive.google.com/file/d/1-00S_CntSWVY0s9GHLsL9PDedFd_V2Sj/view?usp=sharing">Clinical Immunology and Haematology 3A Wikiblog — file 1</a></li>
+      <li><a href="https://drive.google.com/file/d/1L3QwvuFImUthidAeHw7ZtgKZOxXVLYG5/view?usp=drive_link">Clinical Immunology and Haematology 3A Wikiblog — file 2</a></li>
+    </ul>
+  </div>
+
+  <div class="appendix-group">
+    <div class="appendix-group-title">Medical Microbiology 3 Lectures</div>
+    <ul class="appendix-links">
+      <li><a href="https://drive.google.com/file/d/1i__L2CsVjMp2zJNxnGoLOAf98fhup0tt/view?usp=drive_link">Lecture file 1</a></li>
+      <li><a href="https://drive.google.com/file/d/1HkjGw0LgNuL7uAcOAIQJRMMkFZ9O_fcX/view?usp=drive_link">Lecture file 2</a></li>
+      <li><a href="https://drive.google.com/file/d/1DKRJuAol-0Pb5COVJr4eQNTNwOmpAO9D/view?usp=drive_link">Lecture file 3</a></li>
+    </ul>
+  </div>
+
+  <div class="appendix-group">
+    <div class="appendix-group-title">Transposable Elements</div>
+    <ul class="appendix-links">
+      <li><a href="https://drive.google.com/file/d/1JTgOaQWGtRkGilre9qnuzyKmufOBo1Yd/view?usp=drive_link">Molecular Genetics 3 lecture material</a></li>
+    </ul>
+  </div>
+</div>
+<div class="appendix-note"><strong>Appendix files pending.</strong> This section is intentionally left ready for the original Year 3 materials and lecture assets once you send them.</div></section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
